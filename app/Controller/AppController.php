@@ -32,4 +32,22 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
+    function setFlash($msg, $isSuccess = true, $key = 'flash', $params = array()) {
+        //$element = $isSuccess ? "FlashMessageGood" : "FlashMessageBad";
+        $params['class'] = $isSuccess ? 'success' : 'alert';
+
+//        if (is_array($msg)) {
+//            $message = $this->Message->findBySlug($msg['slug']);
+//            $msg = $message['Message']['body'];
+//            //$element = "ModalFlashMessageBad";
+//            $params['title'] = $message['Message']['title'];
+//        }
+
+        $this->Session->setFlash($msg, 'flash_message', $params, $key);
+
+        //if (!$isSuccess) {
+        //	$this->log('An error occurred', $msg, 3);
+        //}
+    }
 }
