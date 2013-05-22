@@ -20,15 +20,9 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th><?php echo $this->Paginator->sort('category_id');?></th>
 			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('excerpt');?></th>
-			<th><?php echo $this->Paginator->sort('body');?></th>
-			<th><?php echo $this->Paginator->sort('enabled');?></th>
-			<th><?php echo $this->Paginator->sort('slug');?></th>
-			<th><?php echo $this->Paginator->sort('type');?></th>
+            <th><?php echo $this->Paginator->sort('category_id');?></th>
+            <th><?php echo $this->Paginator->sort('enabled');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	</thead>
@@ -37,17 +31,11 @@
 	foreach ($posts as $post): ?>
 	<tr>
 		<td><?php echo h($post['Post']['id']); ?>&nbsp;</td>
-		<td><?php echo h($post['Post']['created']); ?>&nbsp;</td>
-		<td><?php echo h($post['Post']['modified']); ?>&nbsp;</td>
-		<td>
+        <td><?php echo h($post['Post']['title']); ?>&nbsp;</td>
+        <td>
 			<?php echo $this->Html->link($post['Category']['name'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id'])); ?>
 		</td>
-		<td><?php echo h($post['Post']['title']); ?>&nbsp;</td>
-		<td><?php echo h($post['Post']['excerpt']); ?>&nbsp;</td>
-		<td><?php echo h($post['Post']['body']); ?>&nbsp;</td>
 		<td><?php echo h($post['Post']['enabled']); ?>&nbsp;</td>
-		<td><?php echo h($post['Post']['slug']); ?>&nbsp;</td>
-		<td><?php echo h($post['Post']['type']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('<i class="icon-eye-open"></i> View'), array('action' => 'view', $post['Post']['id']), array('escape' => false, 'class' => 'btn')); ?>
 			<?php echo $this->Html->link(__('<i class="icon-pencil"></i> Edit'), array('action' => 'edit', $post['Post']['id']), array('escape' => false, 'class' => 'btn')); ?>
