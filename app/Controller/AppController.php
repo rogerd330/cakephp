@@ -41,6 +41,26 @@ class AppController extends Controller {
             $this->theme = 'Bootstrap';
             $this->layout = 'admin';
             $isAdminAction = true;
+
+            // Build a dynamic admin site navigation menu based on loaded plugins
+            $admin_nav = array();
+            $plugins = App::objects('plugins');
+
+            foreach ($plugins as $plugin) {
+                if (CakePlugin::loaded($plugin)) {
+                    $controller = "{$plugin}AppController";
+                    if (class_exists($controller)) {
+                        $plugin_nav = call_user_func(array($controller, 'getAdminNav'));
+                        foreach ($plugin_nav as $nav) {
+                            $nav['link']['plugin'] = Inflector::underscore($plugin);
+                            $nav['link']['admin'] = true;
+                            $admin_nav[] = $nav;
+                        }
+                    }
+                }
+            }
+
+            $this->set(compact('admin_nav'));
         }
 
     }
