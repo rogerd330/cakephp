@@ -33,6 +33,18 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+    function beforeRender() {
+        $isAdminAction = false;
+//        $isAdminUser = $this->Auth->user('group_id') == 1;
+
+        if (isset($this->params['admin']) && $this->params['admin']) {
+            $this->theme = 'Bootstrap';
+            $this->layout = 'admin';
+            $isAdminAction = true;
+        }
+
+    }
+
     function setFlash($msg, $isSuccess = true, $key = 'flash', $params = array()) {
         //$element = $isSuccess ? "FlashMessageGood" : "FlashMessageBad";
         $params['class'] = $isSuccess ? 'success' : 'alert';
