@@ -39,7 +39,7 @@
         <?php echo $this->fetch('content'); ?>
     </div>
 
-    <?php echo $this->Html->script(array('bootstrap.min.js')) ?>
+    <?php echo $this->Html->script(array('//code.jquery.com/jquery-1.9.1.min.js', 'bootstrap.min.js')) ?>
 
     <?php echo $this->element('sql_dump'); ?>
 </body>
