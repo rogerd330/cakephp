@@ -32,7 +32,7 @@
     <?php
         echo $this->Form->input('starts', array('minYear' => date('Y'), 'maxYear' => date('Y') + 5, 'class' => 'input-mini', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
         echo $this->Form->input('ends', array('minYear' => date('Y'), 'maxYear' => date('Y') + 5, 'class' => 'input-mini', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
-        echo $this->Form->input('enabled', array('checked' => 'checked', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
+        echo $this->element('BootstrapCheckbox', array('field' => 'Event.enabled', 'label' => 'Enabled?', 'checked' => 'checked'))
     ?>
             </div>
         </div>
