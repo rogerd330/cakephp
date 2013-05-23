@@ -18,14 +18,9 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th><?php echo $this->Paginator->sort('starts');?></th>
-			<th><?php echo $this->Paginator->sort('ends');?></th>
-			<th><?php echo $this->Paginator->sort('location');?></th>
+            <th><?php echo $this->Paginator->sort('title');?></th>
+            <th><?php echo $this->Paginator->sort('starts');?></th>
 			<th><?php echo $this->Paginator->sort('enabled');?></th>
-			<th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('body');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	</thead>
@@ -34,14 +29,9 @@
 	foreach ($events as $event): ?>
 	<tr>
 		<td><?php echo h($event['Event']['id']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['created']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['starts']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['ends']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['location']); ?>&nbsp;</td>
+        <td><?php echo h($event['Event']['title']); ?>&nbsp;</td>
+        <td><?php echo h($event['Event']['starts']); ?>&nbsp;</td>
 		<td><?php echo h($event['Event']['enabled']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['title']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['body']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('<i class="icon-eye-open"></i> View'), array('action' => 'view', $event['Event']['id']), array('escape' => false, 'class' => 'btn')); ?>
 			<?php echo $this->Html->link(__('<i class="icon-pencil"></i> Edit'), array('action' => 'edit', $event['Event']['id']), array('escape' => false, 'class' => 'btn')); ?>
