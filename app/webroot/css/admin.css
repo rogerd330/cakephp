@@ -1,3 +1,11 @@
 body {
     padding-top: 60px;
 }
+
+.align_center, td.align_center {
+    text-align: center;
+}
+
+.align_right, td.align_right {
+    text-align: right;
+}

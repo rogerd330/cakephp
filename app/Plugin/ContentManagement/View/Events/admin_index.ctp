@@ -31,7 +31,7 @@
 		<td><?php echo h($event['Event']['id']); ?>&nbsp;</td>
         <td><?php echo h($event['Event']['title']); ?>&nbsp;</td>
         <td><?php echo h($event['Event']['starts']); ?>&nbsp;</td>
-		<td><?php echo h($event['Event']['enabled']); ?>&nbsp;</td>
+		<td class="align_center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $event['Event']['enabled'])) ?></td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('<i class="icon-eye-open"></i> View'), array('action' => 'view', $event['Event']['id']), array('escape' => false, 'class' => 'btn')); ?>
 			<?php echo $this->Html->link(__('<i class="icon-pencil"></i> Edit'), array('action' => 'edit', $event['Event']['id']), array('escape' => false, 'class' => 'btn')); ?>

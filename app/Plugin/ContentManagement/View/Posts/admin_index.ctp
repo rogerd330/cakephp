@@ -35,7 +35,7 @@
         <td>
 			<?php echo $this->Html->link($post['Category']['name'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id'])); ?>
 		</td>
-		<td><?php echo h($post['Post']['enabled']); ?>&nbsp;</td>
+		<td class="align_center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $post['Post']['enabled'])) ?></td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('<i class="icon-eye-open"></i> View'), array('action' => 'view', $post['Post']['id']), array('escape' => false, 'class' => 'btn')); ?>
 			<?php echo $this->Html->link(__('<i class="icon-pencil"></i> Edit'), array('action' => 'edit', $post['Post']['id']), array('escape' => false, 'class' => 'btn')); ?>
