@@ -42,27 +42,8 @@ class AppController extends Controller {
             $this->layout = 'admin';
             $isAdminAction = true;
 
-            // Build a dynamic admin site navigation menu based on loaded plugins
-            $admin_nav = array();
-            $plugins = App::objects('plugins');
-
-            foreach ($plugins as $plugin) {
-                if (CakePlugin::loaded($plugin)) {
-                    $controller = "{$plugin}AppController";
-                    if (class_exists($controller)) {
-                        $plugin_nav = call_user_func(array($controller, 'getAdminNav'));
-                        foreach ($plugin_nav as $nav) {
-                            $nav['link']['plugin'] = Inflector::underscore($plugin);
-                            $nav['link']['admin'] = true;
-                            $admin_nav[] = $nav;
-                        }
-                    }
-                }
-            }
-
-            $this->set(compact('admin_nav'));
+            $this->_loadAdminNav();
         }
-
     }
 
     function setFlash($msg, $isSuccess = true, $key = 'flash', $params = array()) {
@@ -81,5 +62,34 @@ class AppController extends Controller {
         //if (!$isSuccess) {
         //	$this->log('An error occurred', $msg, 3);
         //}
+    }
+
+    private function _loadAdminNav() {
+        $admin_nav = array();
+        $plugins = App::objects('plugins');
+
+        foreach ($plugins as $plugin) {
+            if (CakePlugin::loaded($plugin)) {
+                $controller = "{$plugin}AppController";
+
+                if (class_exists($controller)) {
+                    $plugin_nav = call_user_func(array($controller, 'getAdminNav'));
+                }
+                else {
+                    //HACK: why would some plugin controller instances exist and others not?
+                    App::uses($controller, "{$plugin}.Controller");
+                    $instance = new $controller;
+                    $plugin_nav = call_user_func(array($instance, 'getAdminNav'));
+                }
+
+                foreach ($plugin_nav as $nav) {
+                    $nav['link']['plugin'] = Inflector::underscore($plugin);
+                    $nav['link']['admin'] = true;
+                    $admin_nav[] = $nav;
+                }
+            }
+        }
+
+        $this->set(compact('admin_nav'));
     }
 }
