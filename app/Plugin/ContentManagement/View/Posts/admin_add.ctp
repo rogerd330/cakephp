@@ -34,7 +34,7 @@
     <?php
         echo $this->Form->input('category_id', array('class' => 'input-xlarge', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
         echo $this->Form->input('slug', array('class' => 'input-xlarge', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
-        echo $this->Form->input('type', array('div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
+        echo $this->Form->input('type', array('type' => 'select', 'options' => array(1 => 'Page', 2 => 'Post'), 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
         echo $this->element('BootstrapCheckbox', array('field' => 'Post.enabled', 'label' => 'Enabled?', 'checked' => 'checked'))
     ?>
             </div>

@@ -108,4 +108,4 @@ CakeLog::config('error', array(
 	'file' => 'error',
 ));
 
-CakePlugin::load('ContentManagement', array('bootstrap' => false, 'routes' => false));
+CakePlugin::load('ContentManagement', array('bootstrap' => true, 'routes' => false));
