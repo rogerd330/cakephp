@@ -72,15 +72,10 @@ class AppController extends Controller {
             if (CakePlugin::loaded($plugin)) {
                 $controller = "{$plugin}AppController";
 
-                if (class_exists($controller)) {
-                    $plugin_nav = call_user_func(array($controller, 'getAdminNav'));
-                }
-                else {
-                    //HACK: why would some plugin controller instances exist and others not?
-                    App::uses($controller, "{$plugin}.Controller");
-                    $instance = new $controller;
-                    $plugin_nav = call_user_func(array($instance, 'getAdminNav'));
-                }
+                App::uses($controller, "{$plugin}.Controller");
+                $instance = new $controller;
+                $plugin_nav = call_user_func(array($instance, 'getAdminNav'));
+                $instance = null;
 
                 foreach ($plugin_nav as $nav) {
                     $nav['link']['plugin'] = Inflector::underscore($plugin);
