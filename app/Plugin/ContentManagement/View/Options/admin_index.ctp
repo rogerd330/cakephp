@@ -19,7 +19,6 @@
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
-			<th><?php echo $this->Paginator->sort('value');?></th>
 			<th><?php echo $this->Paginator->sort('autoload');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
@@ -30,8 +29,7 @@
 	<tr>
 		<td><?php echo h($option['Option']['id']); ?>&nbsp;</td>
 		<td><?php echo h($option['Option']['name']); ?>&nbsp;</td>
-		<td><?php echo h($option['Option']['value']); ?>&nbsp;</td>
-		<td><?php echo h($option['Option']['autoload']); ?>&nbsp;</td>
+		<td class="align_center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $option['Option']['autoload'])) ?></td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('<i class="icon-eye-open"></i> View'), array('action' => 'view', $option['Option']['id']), array('escape' => false, 'class' => 'btn')); ?>
 			<?php echo $this->Html->link(__('<i class="icon-pencil"></i> Edit'), array('action' => 'edit', $option['Option']['id']), array('escape' => false, 'class' => 'btn')); ?>

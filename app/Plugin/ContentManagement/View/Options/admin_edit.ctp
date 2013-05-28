@@ -20,13 +20,20 @@
 
 <?php echo $this->Form->create('Option');?>
 	<fieldset>
-		
+		<div class="row">
+            <div class="span7">
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('name', array('div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
-		echo $this->Form->input('value', array('div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
-		echo $this->Form->input('autoload', array('div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
+		echo $this->Form->input('name', array('class' => 'input-xxlarge', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
+		echo $this->Form->input('value', array('rows' => 6, 'class' => 'input-xxlarge', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
 	?>
+            </div>
+            <div class="span5">
+    <?php
+        echo $this->element('BootstrapCheckbox', array('field' => 'Option.autoload', 'label' => 'Auto load?'));
+    ?>
+            </div>
+        </div>
 	</fieldset>
 		<div class="form-actions">
 	<?php
