@@ -1,5 +1,13 @@
+html {
+    overflow-y: scroll;
+}
+
 body {
     padding-top: 60px;
+}
+
+.btn-group {
+    margin-bottom: 15px;
 }
 
 .align_center, td.align_center {
