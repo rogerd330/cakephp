@@ -19,18 +19,7 @@
     ?>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="#"><?php echo $admin_name ?></a>
-                <ul class="nav">
-                <?php foreach ($admin_nav as $nav) : ?>
-                    <?php echo $this->Html->tag('li', $this->Html->link($nav['anchor'], $nav['link'])) ?>
-                <?php endforeach ?>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <?php echo $this->BootstrapNavbar->create($admin_name, $admin_nav) ?>
 
     <div class="container main">
 
