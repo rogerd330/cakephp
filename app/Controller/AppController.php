@@ -68,7 +68,8 @@ class AppController extends Controller {
     }
 
     private function _loadAdminNav() {
-        $admin_nav = array();
+        $admin_left_nav = array();
+        $admin_right_nav = array();
         $plugins = App::objects('plugins');
 
         foreach ($plugins as $plugin) {
@@ -80,14 +81,29 @@ class AppController extends Controller {
                 $plugin_nav = call_user_func(array($instance, 'getAdminNav'));
                 $instance = null;
 
-                foreach ($plugin_nav as $nav) {
-                    $nav['link']['plugin'] = Inflector::underscore($plugin);
-                    $nav['link']['admin'] = true;
-                    $admin_nav[] = $nav;
+                if (array_key_exists('left', $plugin_nav) && array_key_exists('right', $plugin_nav)) {
+                    foreach ($plugin_nav['left'] as $nav) {
+                        $nav['link']['plugin'] = Inflector::underscore($plugin);
+                        $nav['link']['admin'] = true;
+                        $admin_left_nav[] = $nav;
+                    }
+
+                    foreach ($plugin_nav['right'] as $nav) {
+                        $nav['link']['plugin'] = Inflector::underscore($plugin);
+                        $nav['link']['admin'] = true;
+                        $admin_right_nav[] = $nav;
+                    }
+                }
+                else {
+                    foreach ($plugin_nav as $nav) {
+                        $nav['link']['plugin'] = Inflector::underscore($plugin);
+                        $nav['link']['admin'] = true;
+                        $admin_left_nav[] = $nav;
+                    }
                 }
             }
         }
 
-        $this->set(compact('admin_nav'));
+        $this->set(compact('admin_left_nav', 'admin_right_nav'));
     }
 }

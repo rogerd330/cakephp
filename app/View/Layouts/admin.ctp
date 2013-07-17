@@ -19,7 +19,7 @@
     ?>
 </head>
 <body>
-    <?php echo $this->BootstrapNavbar->create($admin_name, $admin_nav) ?>
+    <?php echo $this->BootstrapNavbar->create($admin_name, $admin_left_nav, $admin_right_nav) ?>
 
     <div class="container main">
 
