@@ -97,9 +97,9 @@
         <ul>
 	<?php
 		echo "<?php\n";
-		echo "\t\techo \$this->Paginator->prev('&larr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled'));\n";
-		echo "\t\techo \$this->Paginator->numbers(array('separator' => '', 'tag' => 'li'));\n";
-		echo "\t\techo \$this->Paginator->next('&rarr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled'));\n";
+		echo "\t\techo \$this->Paginator->prev('&larr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));\n";
+		echo "\t\techo \$this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentTag' => 'a', 'currentClass' => 'active'));\n";
+		echo "\t\techo \$this->Paginator->next('&rarr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));\n";
 		echo "\t?>\n";
 	?>
         </ul>
