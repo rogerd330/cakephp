@@ -32,6 +32,9 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+    public $theme = 'Site';
+    public $layout = 'default';
+
     public $components = array(
         'DebugKit.Toolbar',
     );
@@ -45,7 +48,7 @@ class AppController extends Controller {
 //        $isAdminUser = $this->Auth->user('group_id') == 1;
 
         if (isset($this->params['admin']) && $this->params['admin']) {
-            $this->theme = 'Bootstrap';
+            $this->theme = 'Admin';
             $this->layout = 'admin';
             $isAdminAction = true;
 
