@@ -13,18 +13,16 @@ class BootstrapNavbarHelper extends AppHelper {
     );
 
     public function create($title, $left_items, $right_items) {
-        $brand = $this->Html->tag('a', $title, array('class' => 'brand'));
+        $brand = $this->Html->div('navbar-header', $this->Html->tag('a', $title, array('class' => 'navbar-brand')), array());
 
         $left_nav = $this->_makeNavMenu($left_items);
         $right_nav = $this->_makeNavMenu($right_items, true);
 
         $nav = $this->Html->div('navbar navbar-inverse navbar-fixed-top',
-                $this->Html->div('navbar-inner',
-                    $this->Html->div('container',
-                        $brand . $left_nav . $right_nav,
-                    array()),
+                $this->Html->div('container',
+                    $brand . $left_nav . $right_nav,
                 array()),
-            array()
+            array('role' => 'navigation')
         );
 
         return $nav;
@@ -58,7 +56,7 @@ class BootstrapNavbarHelper extends AppHelper {
             }
         }
 
-        $nav_class = $pull_right ? 'nav pull-right' : 'nav';
+        $nav_class = $pull_right ? 'nav navbar-nav navbar-right' : 'nav navbar-nav';
 
         $nav = $this->Html->tag('ul',
             $nav_list,
