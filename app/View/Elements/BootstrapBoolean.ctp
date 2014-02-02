@@ -6,16 +6,17 @@ if (empty($icons)) {
 
 switch ($icons) {
         case 'checks':
-                $icon_true = 'icon-ok';
-                $icon_false = 'icon-remove';
+                $icon_true = 'glyphicon-ok';
+                $icon_false = 'glyphicon-remove';
                 break;
 
         case 'eyes':
-                $icon_true = 'icon-eye-open';
-                $icon_false = 'icon-eye-close';
+                $icon_true = 'glyphicon-eye-open';
+                $icon_false = 'glyphicon-eye-close';
                 break;
 }
 
-$icon = $enabled ? $icon_true : $icon_false;
+$icon = array('glyphicon');
+$icon[] = $enabled ? $icon_true : $icon_false;
 
-echo $this->Html->tag('i', "", array('class' => $icon));
+echo $this->Html->tag('span', "", array('class' => $icon));
