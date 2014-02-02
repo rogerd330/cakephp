@@ -79,13 +79,20 @@ class AppController extends Controller {
         $admin_right_nav = array();
         $plugins = App::objects('plugins');
 
+        $callback_name = 'getAdminNav';
+
         foreach ($plugins as $plugin) {
             if (CakePlugin::loaded($plugin)) {
                 $controller = "{$plugin}AppController";
 
                 App::uses($controller, "{$plugin}.Controller");
                 $instance = new $controller;
-                $plugin_nav = call_user_func(array($instance, 'getAdminNav'));
+
+                if (!method_exists($instance, $callback_name)) {
+                    continue;
+                }
+
+                $plugin_nav = call_user_func(array($instance, $callback_name));
                 $instance = null;
 
                 if (array_key_exists('left', $plugin_nav) && array_key_exists('right', $plugin_nav)) {
