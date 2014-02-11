@@ -37,10 +37,12 @@ class AppController extends Controller {
 
     public $components = array(
         'DebugKit.Toolbar',
+        'Session',
     );
 
     public $helpers = array(
-        'BootstrapNavbar'
+        'BootstrapNavbar',
+        'Time',
     );
 
     function beforeRender() {
