@@ -54,7 +54,7 @@
 					echo "\t\techo \$this->Form->input('{$field}');\n";
 				}
 				else {
-					echo "\t\techo \$this->Form->input('{$field}', array('div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class=\"controls\">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));\n";
+					echo "\t\techo \$this->Form->input('{$field}', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));\n";
 				}
 			}
 		}
@@ -66,7 +66,7 @@
 		echo "\t?>\n";
 ?>
 	</fieldset>
-		<div class="form-actions">
+		<div class="form-group form-actions">
 <?php		
 	echo "\t<?php\n"; 
 		echo "\t\techo \$this->Form->button(__('Save Changes'), array('type' => 'submit', 'class' => 'btn btn-primary'));\n";
