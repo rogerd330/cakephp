@@ -19,36 +19,27 @@
 <?php printf("<?php \$this->set('title_for_layout', '%s %s') ?>\n", Inflector::humanize($action), $singularHumanName); ?>
 <div class="<?php echo $pluralVar;?> form">
 	<h2><?php printf("<?php echo __('%s %s'); ?>", Inflector::humanize($action), $singularHumanName); ?></h2>
-	
-	<div class="btn-group">
-		<a class="btn btn-primary" href="#">Actions</a>
-		<a class="btn btn-primary dropdown-toggle" href="#" data-toggle="dropdown">
-			<span class="caret"></span>
-		</a>		
-		<ul class="dropdown-menu">
-	
-	<?php if (strpos($action, 'add') === false): ?>
-			<li><?php echo "<?php echo \$this->Form->postLink(__('<i class=\"icon-trash\"></i> Delete'), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), array('escape' => false), __('Are you sure you want to delete # %s?', \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>";?></li>
-	<?php endif;?>
-			<li><?php echo "<?php echo \$this->Html->link(__('<i class=\"icon-list-alt\"></i> List " . $pluralHumanName . "'), array('action' => 'index'), array('escape' => false));?>";?></li>
+
+    <div class="btn-group">
+    <?php echo "<?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-list-alt\"></span> List " . $pluralHumanName . "'), array('action' => 'index'), array('class' => 'btn btn-primary', 'escape' => false));?>";?>
 	<?php
 			$done = array();
 			foreach ($associations as $type => $data) {
 				foreach ($data as $alias => $details) {
 					if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
-						echo "\t\t<li><?php echo \$this->Html->link(__('<i class=\"icon-list-alt\"></i> List " . Inflector::humanize($details['controller']) . "'), array('controller' => '{$details['controller']}', 'action' => 'index'), array('escape' => false)); ?> </li>\n";
-						echo "\t\t<li><?php echo \$this->Html->link(__('<i class=\"icon-plus\"></i> New " . Inflector::humanize(Inflector::underscore($alias)) . "'), array('controller' => '{$details['controller']}', 'action' => 'add'), array('escape' => false)); ?> </li>\n";
+						echo "\t\t<?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-list-alt\"></span> List " . Inflector::humanize($details['controller']) . "'), array('controller' => '{$details['controller']}', 'action' => 'index'), array('class' => 'btn btn-primary', 'escape' => false)); ?>\n";
+						echo "\t\t<?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-plus\"></span> New " . Inflector::humanize(Inflector::underscore($alias)) . "'), array('controller' => '{$details['controller']}', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>\n";
 						$done[] = $details['controller'];
 					}
 				}
 			}
 	?>
-		</ul>
-	</div>	
+    <?php if (strpos($action, 'add') === false): ?>
+        <?php echo "<?php echo \$this->Form->postLink(__('<span class=\"glyphicon glyphicon-trash\"></span> Delete'), array('action' => 'delete', \$this->Form->value('{$modelClass}.{$primaryKey}')), array('class' => 'btn btn-danger', 'escape' => false), __('Are you sure you want to delete # %s?', \$this->Form->value('{$modelClass}.{$primaryKey}'))); ?>";?>
+    <?php endif;?>
+	</div>
 	
 	<br />
-	
-
 
 <?php echo "<?php echo \$this->Form->create('{$modelClass}');?>\n";?>
 	<fieldset>
@@ -80,7 +71,7 @@
 	echo "\t<?php\n"; 
 		echo "\t\techo \$this->Form->button(__('Save Changes'), array('type' => 'submit', 'class' => 'btn btn-primary'));\n";
 		echo "\t\techo '&nbsp;';\n";
-		echo "\t\techo \$this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn'));\n";	
+		echo "\t\techo \$this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));\n";
 	echo "\t?>\n";
 ?>
 		</div>	

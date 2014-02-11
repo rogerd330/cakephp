@@ -21,26 +21,20 @@
 	<h2><?php echo "<?php echo __('{$pluralHumanName}');?>";?></h2>
 	
 	<div class="btn-group">
-		<a class="btn btn-primary" href="#"><?php echo "<?php echo __('Actions'); ?>"; ?></a>
-		<a class="btn btn-primary dropdown-toggle" href="#" data-toggle="dropdown">
-			<span class="caret"></span>
-		</a>		
-		<ul class="dropdown-menu">
-			<li><?php echo "<?php echo \$this->Html->link(__('<i class=\"icon-plus\"></i> New " . $singularHumanName . "'), array('action' => 'add'), array('escape' => false)); ?>";?></li>
+    <?php echo "<?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-plus\"></span> New " . $singularHumanName . "'), array('action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>";?>
 	<?php
 		$done = array();
 		foreach ($associations as $type => $data) {
 			foreach ($data as $alias => $details) {
 				if ($details['controller'] != $this->name && !in_array($details['controller'], $done)) {
-					echo "\t\t<li><?php echo \$this->Html->link(__('<i class=\"icon-list-alt\"></i> List " . Inflector::humanize($details['controller']) . "'), array('controller' => '{$details['controller']}', 'action' => 'index'), array('escape' => false)); ?> </li>\n";
-					echo "\t\t<li><?php echo \$this->Html->link(__('<i class=\"icon-plus\"></i> New " . Inflector::humanize(Inflector::underscore($alias)) . "'), array('controller' => '{$details['controller']}', 'action' => 'add'), array('escape' => false)); ?> </li>\n";
+					echo "\t\t<?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-list-alt\"></span> List " . Inflector::humanize($details['controller']) . "'), array('controller' => '{$details['controller']}', 'action' => 'index'), array('class' => 'btn btn-primary', 'escape' => false)); ?>\n";
+					echo "\t\t<?php echo \$this->Html->link(__('<span class=\"glyphicon glyphicon-plus\"></span> New " . Inflector::humanize(Inflector::underscore($alias)) . "'), array('controller' => '{$details['controller']}', 'action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>\n";
 					$done[] = $details['controller'];
 				}
 			}
 		}
 	?>
-		</ul>
-	</div>	
+	</div>
 	
 	<br />
 	
@@ -75,9 +69,9 @@
 		}
 
 		echo "\t\t<td class=\"actions\">\n";
-		echo "\t\t\t<?php echo \$this->Html->link(__('<i class=\"icon-eye-open\"></i> View'), array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape' => false, 'class' => 'btn')); ?>\n";
-	 	echo "\t\t\t<?php echo \$this->Html->link(__('<i class=\"icon-pencil\"></i> Edit'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape' => false, 'class' => 'btn')); ?>\n";
-	 	echo "\t\t\t<?php echo \$this->Form->postLink(__('<i class=\"icon-trash icon-white\"></i> Delete'), array('action' => 'delete', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape' => false, 'class' => 'btn btn-danger'), __('Are you sure you want to delete # %s?', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?>\n";
+		echo "\t\t\t<?php echo \$this->Html->link(__('<i class=\"glyphicon glyphicon-eye-open\"></i> View'), array('action' => 'view', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape' => false, 'class' => 'btn btn-default')); ?>\n";
+	 	echo "\t\t\t<?php echo \$this->Html->link(__('<i class=\"glyphicon glyphicon-pencil\"></i> Edit'), array('action' => 'edit', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape' => false, 'class' => 'btn btn-default')); ?>\n";
+	 	echo "\t\t\t<?php echo \$this->Form->postLink(__('<i class=\"glyphicon glyphicon-trash icon-white\"></i> Delete'), array('action' => 'delete', \${$singularVar}['{$modelClass}']['{$primaryKey}']), array('escape' => false, 'class' => 'btn btn-danger'), __('Are you sure you want to delete # %s?', \${$singularVar}['{$modelClass}']['{$primaryKey}'])); ?>\n";
 		echo "\t\t</td>\n";
 	echo "\t</tr>\n";
 
@@ -93,8 +87,7 @@
 	?>";?>
 	</p>
 
-	<div class="pagination">
-        <ul>
+    <ul class="pagination">
 	<?php
 		echo "<?php\n";
 		echo "\t\techo \$this->Paginator->prev('&larr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));\n";
@@ -102,6 +95,5 @@
 		echo "\t\techo \$this->Paginator->next('&rarr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));\n";
 		echo "\t?>\n";
 	?>
-        </ul>
-	</div>
+    </ul>
 </div>
