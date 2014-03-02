@@ -60,7 +60,7 @@ class AppController extends Controller {
 
     function setFlash($msg, $isSuccess = true, $key = 'flash', $params = array()) {
         //$element = $isSuccess ? "FlashMessageGood" : "FlashMessageBad";
-        $params['class'] = $isSuccess ? 'success' : 'alert';
+        $params['class'] = $isSuccess ? 'success' : 'danger';
 
 //        if (is_array($msg)) {
 //            $message = $this->Message->findBySlug($msg['slug']);
