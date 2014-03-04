@@ -132,6 +132,9 @@ class CategoriesController extends ContentManagementAppController {
 				$this->setFlash(__('The category could not be saved. Please, try again.'), false);
 			}
 		}
+
+        $parents = $this->Category->generateTreeList();
+        $this->set(compact('parents'));
 	}
 
 /**
@@ -155,6 +158,9 @@ class CategoriesController extends ContentManagementAppController {
 		} else {
 			$this->request->data = $this->Category->read(null, $id);
 		}
+
+        $parents = $this->Category->generateTreeList();
+        $this->set(compact('parents'));
 	}
 
 /**
