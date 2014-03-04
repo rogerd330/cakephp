@@ -55,7 +55,7 @@ class ContentManagementSchema extends CakeSchema {
 		'parent_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'lft' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'rght' => array('type' => 'integer', 'null' => true, 'default' => null),
-		'category_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'index'),
+		'category_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'key' => 'index'),
 		'title' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'excerpt' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'body' => array('type' => 'text', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
