@@ -101,6 +101,13 @@ class Post extends ContentManagementAppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
-		)
+		),
+        'ParentPost' => array(
+            'className' => 'Post',
+            'foreignKey' => 'parent_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        ),
 	);
 }

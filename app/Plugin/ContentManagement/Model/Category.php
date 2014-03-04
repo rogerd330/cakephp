@@ -30,6 +30,21 @@ class Category extends ContentManagementAppModel {
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
 /**
+ * belongsTo associations
+ *
+ * @var array
+ */
+    public $belongsTo = array(
+        'ParentCategory' => array(
+            'className' => 'Category',
+            'foreignKey' => 'parent_id',
+            'conditions' => '',
+            'fields' => '',
+            'order' => ''
+        )
+    );
+
+/**
  * hasMany associations
  *
  * @var array
