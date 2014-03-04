@@ -1,6 +1,10 @@
+sass_dir = "scss"
+css_dir = "app/webroot/css"
+images_dir = "app/webroot/img"
+js_dir = "app/webroot/js"
+relative_assets = true
 project_type = :stand_alone
 environment = :development
-css_dir = "app/webroot/css"
-sass_dir = "scss"
-images_dir = "app/webroot/img"
+#environment = :production
 output_style = :expanded
+#output_style = :compressed
