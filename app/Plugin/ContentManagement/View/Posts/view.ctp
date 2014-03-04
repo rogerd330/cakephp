@@ -8,11 +8,6 @@
 			<?php echo h($post['Post']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Parent Post'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($post['ParentPost']['title'], array('controller' => 'posts', 'action' => 'view', $post['ParentPost']['id'])); ?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Category'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($post['Category']['name'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id'])); ?>

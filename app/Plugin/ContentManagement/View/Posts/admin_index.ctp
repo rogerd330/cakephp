@@ -16,7 +16,6 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
             <th><?php echo $this->Paginator->sort('title');?></th>
-			<th><?php echo $this->Paginator->sort('parent_id');?></th>
 			<th><?php echo $this->Paginator->sort('category_id');?></th>
 			<th><?php echo $this->Paginator->sort('enabled');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -29,9 +28,6 @@
 		<td><?php echo h($post['Post']['id']); ?>&nbsp;</td>
 		<td><?php echo h($post['Post']['created']); ?>&nbsp;</td>
         <td><?php echo h($post['Post']['title']); ?>&nbsp;</td>
-		<td>
-			<?php echo $this->Html->link($post['ParentPost']['title'], array('controller' => 'posts', 'action' => 'view', $post['ParentPost']['id'])); ?>
-		</td>
 		<td>
 			<?php echo $this->Html->link($post['Category']['name'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id'])); ?>
 		</td>
