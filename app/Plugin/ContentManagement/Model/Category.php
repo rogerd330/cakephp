@@ -6,6 +6,9 @@ App::uses('ContentManagementAppModel', 'ContentManagement.Model');
  * @property Post $Post
  */
 class Category extends ContentManagementAppModel {
+
+    public $actsAs = array('Tree');
+
 /**
  * Validation rules
  *

@@ -10,6 +10,9 @@ class ContentManagementSchema extends CakeSchema {
 
 	public $categories = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'parent_id' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'lft' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'rght' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1)
