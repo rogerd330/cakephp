@@ -7,7 +7,7 @@ App::uses('ContentManagementAppController', 'ContentManagement.Controller');
  */
 class PostsController extends ContentManagementAppController {
 
-
+    public $uses = array('ContentManagement.Post', 'ContentManagement.Category');
 /**
  * index method
  *
@@ -15,6 +15,11 @@ class PostsController extends ContentManagementAppController {
  */
 	public function index() {
 		$this->Post->recursive = 0;
+        $this->paginate = array(
+            'conditions' => array(
+                'Post.type' => CMS_POST,
+            )
+        );
 		$this->set('posts', $this->paginate());
 	}
 
@@ -24,13 +29,13 @@ class PostsController extends ContentManagementAppController {
  * @param string $id
  * @return void
  */
-//	public function view($id = null) {
-//		$this->Post->id = $id;
-//		if (!$this->Post->exists()) {
-//			throw new NotFoundException(__('Invalid post'));
-//		}
-//		$this->set('post', $this->Post->read(null, $id));
-//	}
+	public function view($id = null) {
+		$this->Post->id = $id;
+		if (!$this->Post->exists()) {
+			throw new NotFoundException(__('Invalid post'));
+		}
+		$this->set('post', $this->Post->read(null, $id));
+	}
 
 /**
  * add method
@@ -104,6 +109,11 @@ class PostsController extends ContentManagementAppController {
  */
 	public function admin_index() {
 		$this->Post->recursive = 0;
+        $this->paginate = array(
+            'conditions' => array(
+                'Post.type' => CMS_POST,
+            )
+        );
 		$this->set('posts', $this->paginate());
 	}
 
@@ -136,8 +146,9 @@ class PostsController extends ContentManagementAppController {
 				$this->setFlash(__('The post could not be saved. Please, try again.'), false);
 			}
 		}
-		$categories = $this->Post->Category->find('list');
-		$this->set(compact('categories'));
+		$categories = $this->Category->generateTreeList();
+        $parents = $this->Post->generateTreeList(array('Post.type' => CMS_POST));
+		$this->set(compact('categories', 'parents'));
 	}
 
 /**
@@ -161,8 +172,10 @@ class PostsController extends ContentManagementAppController {
 		} else {
 			$this->request->data = $this->Post->read(null, $id);
 		}
+//        TODO why won't a related model correctly generate a TreeList of a model ONLY when editing?
 		$categories = $this->Post->Category->find('list');
-		$this->set(compact('categories'));
+        $parents = $this->Post->generateTreeList(array('Post.type' => CMS_POST, 'Post.id !=' => $id));
+        $this->set(compact('categories', 'parents'));
 	}
 
 /**
