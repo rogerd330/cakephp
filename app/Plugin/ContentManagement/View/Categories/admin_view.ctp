@@ -23,6 +23,21 @@
 			<?php echo h($category['Category']['id']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Parent Id'); ?></dt>
+		<dd>
+			<?php echo h($category['Category']['parent_id']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Lft'); ?></dt>
+		<dd>
+			<?php echo h($category['Category']['lft']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Rght'); ?></dt>
+		<dd>
+			<?php echo h($category['Category']['rght']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Name'); ?></dt>
 		<dd>
 			<?php echo h($category['Category']['name']); ?>
@@ -39,6 +54,9 @@
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('Parent Id'); ?></th>
+		<th><?php echo __('Lft'); ?></th>
+		<th><?php echo __('Rght'); ?></th>
 		<th><?php echo __('Category Id'); ?></th>
 		<th><?php echo __('Title'); ?></th>
 		<th><?php echo __('Excerpt'); ?></th>
@@ -55,6 +73,9 @@
 			<td><?php echo $post['id'];?></td>
 			<td><?php echo $post['created'];?></td>
 			<td><?php echo $post['modified'];?></td>
+			<td><?php echo $post['parent_id'];?></td>
+			<td><?php echo $post['lft'];?></td>
+			<td><?php echo $post['rght'];?></td>
 			<td><?php echo $post['category_id'];?></td>
 			<td><?php echo $post['title'];?></td>
 			<td><?php echo $post['excerpt'];?></td>
