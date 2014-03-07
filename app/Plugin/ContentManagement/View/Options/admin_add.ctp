@@ -1,43 +1,33 @@
-<?php $this->set('title_for_layout', 'Admin Add Option') ?>
+<?php $this->set('title_for_layout', 'Add Option') ?>
 <div class="options form">
-	<h2><?php echo __('Admin Add Option'); ?></h2>
-	
-	<div class="btn-group">
-		<a class="btn btn-primary" href="#">Actions</a>
-		<a class="btn btn-primary dropdown-toggle" href="#" data-toggle="dropdown">
-			<span class="caret"></span>
-		</a>		
-		<ul class="dropdown-menu">
-	
-				<li><?php echo $this->Html->link(__('<i class="icon-list-alt"></i> List Options'), array('action' => 'index'), array('escape' => false));?></li>
-			</ul>
-	</div>	
+	<h2><?php echo __('Add Option'); ?></h2>
+
+    <div class="btn-group">
+    <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list-alt"></span> List Options'), array('action' => 'index'), array('class' => 'btn btn-primary', 'escape' => false));?>	    	</div>
 	
 	<br />
-	
-
 
 <?php echo $this->Form->create('Option');?>
 	<fieldset>
-		<div class="row">
-            <div class="span7">
+        <div class="row">
+            <div class="col-lg-7">
 	<?php
-		echo $this->Form->input('name', array('class' => 'input-xxlarge', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
-		echo $this->Form->input('value', array('rows' => 6, 'class' => 'input-xxlarge', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
+		echo $this->Form->input('name', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
+		echo $this->Form->input('value', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
 	?>
             </div>
-            <div class="span5">
+            <div class="col-lg-5">
     <?php
         echo $this->element('BootstrapCheckbox', array('checked' => 'checked', 'field' => 'Option.autoload', 'label' => 'Auto load?'));
     ?>
             </div>
         </div>
-	</fieldset>
-		<div class="form-actions">
+    </fieldset>
+		<div class="form-group form-actions">
 	<?php
 		echo $this->Form->button(__('Save Changes'), array('type' => 'submit', 'class' => 'btn btn-primary'));
 		echo '&nbsp;';
-		echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn'));
+		echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));
 	?>
 		</div>	
 <?php echo $this->Form->end();?>

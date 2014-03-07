@@ -3,14 +3,7 @@
 	<h2><?php echo __('Options');?></h2>
 	
 	<div class="btn-group">
-		<a class="btn btn-primary" href="#"><?php echo __('Actions'); ?></a>
-		<a class="btn btn-primary dropdown-toggle" href="#" data-toggle="dropdown">
-			<span class="caret"></span>
-		</a>		
-		<ul class="dropdown-menu">
-			<li><?php echo $this->Html->link(__('<i class="icon-plus"></i> New Option'), array('action' => 'add'), array('escape' => false)); ?></li>
-			</ul>
-	</div>	
+    <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span> New Option'), array('action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>		</div>
 	
 	<br />
 	
@@ -29,11 +22,11 @@
 	<tr>
 		<td><?php echo h($option['Option']['id']); ?>&nbsp;</td>
 		<td><?php echo h($option['Option']['name']); ?>&nbsp;</td>
-		<td class="align_center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $option['Option']['autoload'])) ?></td>
+		<td class="text-center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $option['Option']['autoload'])) ?></td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('<i class="icon-eye-open"></i> View'), array('action' => 'view', $option['Option']['id']), array('escape' => false, 'class' => 'btn')); ?>
-			<?php echo $this->Html->link(__('<i class="icon-pencil"></i> Edit'), array('action' => 'edit', $option['Option']['id']), array('escape' => false, 'class' => 'btn')); ?>
-			<?php echo $this->Form->postLink(__('<i class="icon-trash icon-white"></i> Delete'), array('action' => 'delete', $option['Option']['id']), array('escape' => false, 'class' => 'btn btn-danger'), __('Are you sure you want to delete # %s?', $option['Option']['id'])); ?>
+			<?php echo $this->Html->link(__('<i class="glyphicon glyphicon-eye-open"></i> View'), array('action' => 'view', $option['Option']['id']), array('escape' => false, 'class' => 'btn btn-default')); ?>
+			<?php echo $this->Html->link(__('<i class="glyphicon glyphicon-pencil"></i> Edit'), array('action' => 'edit', $option['Option']['id']), array('escape' => false, 'class' => 'btn btn-default')); ?>
+			<?php echo $this->Form->postLink(__('<i class="glyphicon glyphicon-trash icon-white"></i> Delete'), array('action' => 'delete', $option['Option']['id']), array('escape' => false, 'class' => 'btn btn-danger'), __('Are you sure you want to delete # %s?', $option['Option']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -46,13 +39,11 @@
 	));
 	?>	</p>
 
-	<div class="pagination">
-        <ul>
+    <ul class="pagination">
 	<?php
-		echo $this->Paginator->prev('&larr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled'));
-		echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li'));
-		echo $this->Paginator->next('&rarr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled'));
+		echo $this->Paginator->prev('&larr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));
+		echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentTag' => 'a', 'currentClass' => 'active'));
+		echo $this->Paginator->next('&rarr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));
 	?>
-        </ul>
-	</div>
+    </ul>
 </div>

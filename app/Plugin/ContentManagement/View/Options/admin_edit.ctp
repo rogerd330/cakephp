@@ -1,45 +1,34 @@
-<?php $this->set('title_for_layout', 'Admin Edit Option') ?>
+<?php $this->set('title_for_layout', 'Edit Option') ?>
 <div class="options form">
-	<h2><?php echo __('Admin Edit Option'); ?></h2>
-	
-	<div class="btn-group">
-		<a class="btn btn-primary" href="#">Actions</a>
-		<a class="btn btn-primary dropdown-toggle" href="#" data-toggle="dropdown">
-			<span class="caret"></span>
-		</a>		
-		<ul class="dropdown-menu">
-	
-				<li><?php echo $this->Form->postLink(__('<i class="icon-trash"></i> Delete'), array('action' => 'delete', $this->Form->value('Option.id')), array('escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Option.id'))); ?></li>
-				<li><?php echo $this->Html->link(__('<i class="icon-list-alt"></i> List Options'), array('action' => 'index'), array('escape' => false));?></li>
-			</ul>
-	</div>	
+	<h2><?php echo __('Edit Option'); ?></h2>
+
+    <div class="btn-group">
+    <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list-alt"></span> List Options'), array('action' => 'index'), array('class' => 'btn btn-primary', 'escape' => false));?>	            <?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-trash"></span> Delete'), array('action' => 'delete', $this->Form->value('Option.id')), array('class' => 'btn btn-danger', 'escape' => false), __('Are you sure you want to delete # %s?', $this->Form->value('Option.id'))); ?>    	</div>
 	
 	<br />
-	
-
 
 <?php echo $this->Form->create('Option');?>
 	<fieldset>
-		<div class="row">
-            <div class="span7">
+        <div class="row">
+            <div class="col-lg-7">
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('name', array('class' => 'input-xxlarge', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
-		echo $this->Form->input('value', array('rows' => 6, 'class' => 'input-xxlarge', 'div' => 'control-group', 'label' => array('class' => 'control-label'), 'between' => '<div class="controls">', 'after' => '</div>', 'error' => array('attributes' => array('class' => 'help-inline'))));
+		echo $this->Form->input('name', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
+		echo $this->Form->input('value', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
 	?>
             </div>
-            <div class="span5">
+            <div class="col-lg-5">
     <?php
         echo $this->element('BootstrapCheckbox', array('field' => 'Option.autoload', 'label' => 'Auto load?'));
     ?>
             </div>
         </div>
 	</fieldset>
-		<div class="form-actions">
+		<div class="form-group form-actions">
 	<?php
 		echo $this->Form->button(__('Save Changes'), array('type' => 'submit', 'class' => 'btn btn-primary'));
 		echo '&nbsp;';
-		echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn'));
+		echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));
 	?>
 		</div>	
 <?php echo $this->Form->end();?>
