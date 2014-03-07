@@ -16,15 +16,13 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
-		<?php echo $title_for_layout; ?>
+		<?php echo $title_for_layout; ?> | <?php echo $option_site_title ?>
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
@@ -38,7 +36,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 <body>
 	<div class="container">
 		<div class="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'http://cakephp.org'); ?></h1>
+			<h1><?php echo $this->Html->link($option_site_title, '/'); ?></h1>
 		</div>
 		<div class="main">
 			<?php echo $this->Session->flash(); ?>
