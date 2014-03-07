@@ -45,6 +45,10 @@ class AppController extends Controller {
         'Time',
     );
 
+    public $uses = array(
+        'ContentManagement.Option',
+    );
+
     function beforeRender() {
         $isAdminAction = false;
 //        $isAdminUser = $this->Auth->user('group_id') == 1;
@@ -56,6 +60,8 @@ class AppController extends Controller {
 
             $this->_loadAdminNav();
         }
+
+        $this->_loadOptions();
     }
 
     function setFlash($msg, $isSuccess = true, $key = 'flash', $params = array()) {
@@ -121,5 +127,19 @@ class AppController extends Controller {
         }
 
         $this->set(compact('admin_left_nav', 'admin_right_nav'));
+    }
+
+    private function _loadOptions() {
+        $options = $this->Option->find('all', array(
+            'conditions' => array(
+                'autoload' => true,
+            ),
+        ));
+
+        foreach ($options as $option) {
+            $name = $option['Option']['name'];
+            $value = $option['Option']['value'];
+            $this->set("option_{$name}", $value);
+        }
     }
 }
