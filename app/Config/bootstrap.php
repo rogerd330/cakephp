@@ -107,4 +107,4 @@ CakeLog::config('error', array(
 ));
 
 CakePlugin::load('DebugKit');
-CakePlugin::load('ContentManagement', array('bootstrap' => true, 'routes' => false));
+CakePlugin::load('ContentManagement', array('bootstrap' => true, 'routes' => true));
