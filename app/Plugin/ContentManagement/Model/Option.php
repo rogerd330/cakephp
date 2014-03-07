@@ -42,4 +42,12 @@ class Option extends ContentManagementAppModel {
 			),
 		),
 	);
+
+    public function beforeSave($options = array()) {
+        $tmp_name = $this->data['Option']['name'];
+        $tmp_name = strtolower($tmp_name);
+        $tmp_name = str_replace(' ', '_', $tmp_name);
+        $tmp_name = str_replace('-', '_', $tmp_name);
+        $this->data['Option']['name'] = $tmp_name;
+    }
 }
