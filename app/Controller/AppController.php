@@ -105,14 +105,18 @@ class AppController extends Controller {
 
                 if (array_key_exists('left', $plugin_nav) && array_key_exists('right', $plugin_nav)) {
                     foreach ($plugin_nav['left'] as $nav) {
-                        $nav['link']['plugin'] = Inflector::underscore($plugin);
-                        $nav['link']['admin'] = true;
+                        if (is_array($nav['link'])) {
+                            $nav['link']['plugin'] = Inflector::underscore($plugin);
+                            $nav['link']['admin'] = true;
+                        }
                         $admin_left_nav[] = $nav;
                     }
 
                     foreach ($plugin_nav['right'] as $nav) {
-                        $nav['link']['plugin'] = Inflector::underscore($plugin);
-                        $nav['link']['admin'] = true;
+                        if (is_array($nav['link'])) {
+                            $nav['link']['plugin'] = Inflector::underscore($plugin);
+                            $nav['link']['admin'] = true;
+                        }
                         $admin_right_nav[] = $nav;
                     }
                 }
