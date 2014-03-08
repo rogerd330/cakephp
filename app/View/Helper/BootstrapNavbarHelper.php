@@ -1,5 +1,5 @@
 <?php
- /**
+/**
  * Created by Roger Dickey, Jr
  * rdickey@whytespyder.com
  * 7/16/13 4:06 PM
@@ -41,7 +41,11 @@ class BootstrapNavbarHelper extends AppHelper {
 
                 $sub_items = null;
                 foreach ($item['links'] as $sub_item) {
-                    $sub_items .= $this->Html->tag('li', $this->Html->link($sub_item['anchor'], $sub_item['link']));
+                    $link_options = array();
+                    if (!empty($sub_item['options'])) {
+                        $link_options = $sub_item['options'];
+                    }
+                    $sub_items .= $this->Html->tag('li', $this->Html->link($sub_item['anchor'], $sub_item['link'], $link_options));
                 }
 
                 $sub_item_list = $this->Html->tag('ul', $sub_items, array('class' => 'dropdown-menu'));
@@ -52,7 +56,11 @@ class BootstrapNavbarHelper extends AppHelper {
                 );
             }
             else {
-                $nav_list .= $this->Html->tag('li', $this->Html->link($item['anchor'], $item['link']));
+                $link_options = array();
+                if (!empty($item['options'])) {
+                    $link_options = $item['options'];
+                }
+                $nav_list .= $this->Html->tag('li', $this->Html->link($item['anchor'], $item['link'], $link_options));
             }
         }
 
