@@ -162,7 +162,10 @@ class PostsController extends ContentManagementAppController {
 		if (!$this->Post->exists()) {
 			throw new NotFoundException(__('Invalid post'));
 		}
-		if ($this->request->is('post') || $this->request->is('put')) {
+
+        $categories = $this->Category->generateTreeList();
+
+        if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Post->save($this->request->data)) {
 				$this->setFlash(__('The post has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -172,8 +175,6 @@ class PostsController extends ContentManagementAppController {
 		} else {
 			$this->request->data = $this->Post->read(null, $id);
 		}
-//        TODO why won't a related model correctly generate a TreeList of a model ONLY when editing?
-		$categories = $this->Post->Category->find('list');
         $parents = $this->Post->generateTreeList(array('Post.type' => CMS_POST, 'Post.id !=' => $id));
         $this->set(compact('categories', 'parents'));
 	}
