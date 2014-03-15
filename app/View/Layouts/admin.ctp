@@ -11,7 +11,7 @@
     <?php
     echo $this->Html->meta('icon');
 
-    echo $this->Html->css(array('bootstrap.min.css', 'bootstrap-responsive.min.css', 'admin'));
+    echo $this->Html->css(array('bootstrap.min.css', 'admin'));
 
     echo $this->fetch('meta');
     echo $this->fetch('css');
