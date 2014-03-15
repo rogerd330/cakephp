@@ -9,6 +9,10 @@ class Post extends ContentManagementAppModel {
 
     public $actsAs = array('Tree');
 
+    public $order = array(
+        'Post.created' => 'DESC',
+    );
+
 /**
  * Validation rules
  *
