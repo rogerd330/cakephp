@@ -15,14 +15,14 @@
 
     <fieldset>
         <div class="row">
-            <div class="col-lg-7">
+            <div class="col-lg-9">
 	<?php
 		echo $this->Form->input('title', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
 		echo $this->Form->input('excerpt', array('rows' => 2, 'div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
-		echo $this->Form->input('body', array('rows' => 5, 'div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
+		echo $this->Form->input('body', array('required' => false, 'rows' => 5, 'div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control ckeditor', 'error' => array('attributes' => array('class' => 'help-block'))));
 	?>
             </div>
-            <div class="col-lg-5">
+            <div class="col-lg-3">
     <?php
         echo $this->Form->input('category_id', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
         echo $this->Form->input('slug', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
