@@ -1,6 +1,6 @@
-<?php $this->set('title_for_layout', 'Admin Add Post') ?>
+<?php $this->set('title_for_layout', 'Add Post') ?>
 <div class="posts form">
-	<h2><?php echo __('Admin Add Post'); ?></h2>
+	<h2><?php echo __('Add Post'); ?></h2>
 
     <div class="btn-group">
         <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list-alt"></span> List Posts'), array('action' => 'index'), array('class' => 'btn btn-primary', 'escape' => false));?>
