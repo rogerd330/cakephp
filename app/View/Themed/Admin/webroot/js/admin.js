@@ -14,6 +14,8 @@ if ( typeof CKEDITOR == 'undefined' ) {
 }
 else {
     if ($('.ckeditor').length) {
+        CKEDITOR.config.extraPlugins = 'iframe';
+        CKEDITOR.config.extraPlugins = 'oembed';
         CKFinder.setupCKEditor( null, '/js/ckfinder/' ) ;
     }
 }
