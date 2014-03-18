@@ -15,7 +15,7 @@
 		</dd>
 		<dt><?php echo __('Body'); ?></dt>
 		<dd>
-			<?php echo h($post['Post']['body']); ?>
+			<?php echo $post['Post']['body']; ?>
 			&nbsp;
 		</dd>
 	</dl>
