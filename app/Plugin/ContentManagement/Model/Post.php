@@ -114,4 +114,12 @@ class Post extends ContentManagementAppModel {
             'order' => ''
         ),
 	);
+
+    public function beforeSave($options = array()) {
+        if (empty($this->data['Post']['slug']) && !empty($this->data['Post']['title'])) {
+            $strings = new Strings();
+            $this->data['Post']['slug'] = $strings->sanitize($this->data['Post']['title']);
+        }
+        return true;
+    }
 }
