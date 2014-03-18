@@ -12,6 +12,7 @@ $posts = $posts->find('all', array(
         'Post.id',
         'Post.slug',
         'Post.type',
+        'ParentPost.slug',
     ),
     'condition' => array(
         'Post.enabled' => true,
@@ -20,7 +21,12 @@ $posts = $posts->find('all', array(
 foreach ($posts as $post) {
     if (!empty($post['Post']['slug'])) {
         if ($post['Post']['type'] == CMS_PAGE) {
-            Router::connect(__('/%s', $post['Post']['slug']), array('controller' => 'Pages', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
+            if (array_key_exists('ParentPost', $post) && !empty($post['ParentPost']['slug'])) {
+                Router::connect(__('/%s/%s', $post['ParentPost']['slug'], $post['Post']['slug']), array('controller' => 'Pages', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
+            }
+            else {
+                Router::connect(__('/%s', $post['Post']['slug']), array('controller' => 'Pages', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
+            }
         }
         else {
             Router::connect(__('/blog/%s', $post['Post']['slug']), array('controller' => 'Posts', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
