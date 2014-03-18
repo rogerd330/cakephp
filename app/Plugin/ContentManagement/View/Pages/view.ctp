@@ -8,9 +8,9 @@
 			<?php echo h($post['Post']['created']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Parent Post'); ?></dt>
+		<dt><?php echo __('Parent Page'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($post['ParentPost']['title'], array('controller' => 'posts', 'action' => 'view', $post['ParentPost']['id'])); ?>
+			<?php echo $this->Html->link($post['ParentPost']['title'], array('controller' => 'Pages', 'action' => 'view', $post['ParentPost']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Body'); ?></dt>
