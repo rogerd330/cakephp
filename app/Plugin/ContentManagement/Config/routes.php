@@ -7,16 +7,25 @@
 
 App::uses('Post', 'ContentManagement.Model');
 $posts = new Post();
-$slugs = $posts->find('list', array(
+$posts = $posts->find('all', array(
     'fields' => array(
+        'Post.id',
         'Post.slug',
+        'Post.type',
     ),
     'condition' => array(
         'Post.enabled' => true,
     ),
 ));
-foreach ($slugs as $k => $v) {
-    if (!empty($v)) {
-        Router::connect(__('/%s', $v), array('controller' => 'Posts', 'action' => 'view', $k, 'plugin' => 'ContentManagement'));
+foreach ($posts as $post) {
+    if (!empty($post['Post']['slug'])) {
+        if ($post['Post']['type'] == CMS_PAGE) {
+            Router::connect(__('/%s', $post['Post']['slug']), array('controller' => 'Pages', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
+        }
+        else {
+            Router::connect(__('/blog/%s', $post['Post']['slug']), array('controller' => 'Posts', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
+        }
     }
 }
+
+Router::connect('/blog/*', array('controller' => 'Posts', 'action' => 'index', 'plugin' => 'ContentManagement'));
