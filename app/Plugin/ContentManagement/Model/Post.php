@@ -100,14 +100,14 @@ class Post extends ContentManagementAppModel {
  */
 	public $belongsTo = array(
 		'Category' => array(
-			'className' => 'Category',
+			'className' => 'ContentManagement.Category',
 			'foreignKey' => 'category_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		),
         'ParentPost' => array(
-            'className' => 'Post',
+            'className' => 'ContentManagement.Post',
             'foreignKey' => 'parent_id',
             'conditions' => '',
             'fields' => '',

@@ -36,7 +36,7 @@ class Category extends ContentManagementAppModel {
  */
     public $belongsTo = array(
         'ParentCategory' => array(
-            'className' => 'Category',
+            'className' => 'ContentManagement.Category',
             'foreignKey' => 'parent_id',
             'conditions' => '',
             'fields' => '',
@@ -51,7 +51,7 @@ class Category extends ContentManagementAppModel {
  */
 	public $hasMany = array(
 		'Post' => array(
-			'className' => 'Post',
+			'className' => 'ContentManagement.Post',
 			'foreignKey' => 'category_id',
 			'dependent' => false,
 			'conditions' => '',
