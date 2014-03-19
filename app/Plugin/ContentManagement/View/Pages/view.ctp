@@ -1,4 +1,12 @@
-<?php $this->extend('/Common/left_nav') ?>
+<?php
+    $page_template = '/Common/left_nav';
+
+    if (file_exists(APP . 'View' . DS . 'Common' . DS . $post['Post']['slug'] . '.ctp')) {
+        $page_template = '/Common' . DS . $post['Post']['slug'];
+    }
+
+    $this->extend($page_template);
+?>
 <?php $this->assign('title', $post['Post']['title']) ?>
 
 <div class="posts view">
