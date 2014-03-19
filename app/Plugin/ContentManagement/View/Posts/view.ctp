@@ -1,23 +1,13 @@
-<?php $this->set('title_for_layout', $post['Post']['title']) ?>
-<div class="posts view">
-<h2><?php echo h($post['Post']['title']); ?></h2>
+<?php $this->extend('/Common/right_nav') ?>
+<?php $this->assign('title', $post['Post']['title']) ?>
 
-	<dl>
-		<dt><?php echo __('Created'); ?></dt>
-		<dd>
-			<?php echo h($post['Post']['created']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Category'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($post['Category']['name'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Body'); ?></dt>
-		<dd>
-			<?php echo $post['Post']['body']; ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div class="posts view">
+    <div class="meta">
+        Posted on <span class="timestamp"><?php echo $this->Time->format('F jS, Y', $post['Post']['created']) ?></span> in <span class="category"><?php echo $post['Category']['name'] ?></span>
+    </div>
+
+    <div class="body">
+        <?php echo $post['Post']['body']; ?>
+    </div>
 </div>
 
