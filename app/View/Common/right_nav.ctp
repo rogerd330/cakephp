@@ -14,6 +14,27 @@ else {
         <?php echo $this->fetch('content') ?>
     </div>
     <div class="col-lg-3 col-lg-offset-1">
-        <?php echo $this->element('ContentManagement.ChildNavList', array('class' => 'pages vertical')) ?>
+        <div class="sidebar">
+            <h3>Recent Posts</h3>
+            <ul class="side-nav">
+                <?php foreach ($recent as $id => $name) : ?>
+                    <li><?php echo $this->Html->link($name, array('action' => 'view', $id, 'plugin' => 'content_management')) ?></li>
+                <?php endforeach ?>
+            </ul>
+
+            <h3>Categories</h3>
+            <ul class="side-nav">
+                <?php foreach ($categories as $id => $name) : ?>
+                    <li><?php echo $this->Html->link($name, array('action' => 'index', 'category' => $id, 'plugin' => 'ContentManagement')) ?></li>
+                <?php endforeach ?>
+            </ul>
+
+            <h3>Archive</h3>
+            <ul class="side-nav">
+                <?php foreach ($archives as $archive) : ?>
+                    <li><?php echo $this->Html->link($this->Time->format('F Y', $archive['Post']['created']), array('action' => 'index', 'archive' => $this->Time->format('Y-m', $archive['Post']['created']), 'plugin' => 'ContentManagement')) ?></li>
+                <?php endforeach ?>
+            </ul>
+        </div>
     </div>
 </div>

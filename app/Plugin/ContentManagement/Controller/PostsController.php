@@ -14,14 +14,36 @@ class PostsController extends ContentManagementAppController {
  * @return void
  */
 	public function index() {
-		$this->Post->recursive = 0;
-        $this->paginate = array(
-            'conditions' => array(
-                'Post.type' => CMS_POST,
-            )
+        $params = array_merge($this->request->params['pass'], $this->request->params['named']);
+
+        $conditions = array(
+            'Post.type' => CMS_POST,
+            'Post.enabled' => true,
         );
-		$this->set('posts', $this->paginate());
-	}
+
+        if (isset($params['category'])) {
+            $conditions[] = array('Post.category_id' => $params['category']);
+        }
+
+        if (isset($params['archive'])) {
+            list($year, $month) = explode('-', $params['archive']);
+            $conditions[] = array(
+                'YEAR(Post.created)' => $year,
+                'MONTH(Post.created)' => $month,
+            );
+        }
+
+        $this->Post->recursive = 0;
+        $this->paginate = array(
+            'conditions' => $conditions,
+            'order' => array(
+                'Post.created' => 'DESC',
+            ),
+            'limit' => 3,
+        );
+        $this->set('posts', $this->paginate());
+        $this->set_sidenav();
+    }
 
 /**
  * view method
@@ -35,6 +57,8 @@ class PostsController extends ContentManagementAppController {
 			throw new NotFoundException(__('Invalid post'));
 		}
 		$this->set('post', $this->Post->read(null, $id));
+        $this->set_sidenav();
+
 	}
 
 /**
@@ -200,4 +224,25 @@ class PostsController extends ContentManagementAppController {
 		$this->setFlash(__('Post was not deleted'), false);
 		$this->redirect(array('action' => 'index'));
 	}
+
+
+    private function set_sidenav() {
+        $recent = $this->Post->find('list', array(
+            'conditions' => array(
+                'Post.type' => CMS_POST,
+                'Post.enabled' => true,
+            ),
+            'limit' => 5,
+        ));
+
+        $categories = $this->Category->find('list');
+
+        $archives = $this->Post->find('all', array(
+            'fields' => 'Post.created',
+            'group' => array('DATE_FORMAT(Post.created, "%Y-%m")'),
+            'order' => array('Post.created' => 'DESC'),
+        ));
+
+        $this->set(compact('recent', 'categories', 'archives'));
+    }
 }
