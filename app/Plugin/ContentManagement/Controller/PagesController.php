@@ -36,7 +36,29 @@ class PagesController extends ContentManagementAppController {
 		if (!$this->Post->exists()) {
 			throw new NotFoundException(__('Invalid page'));
 		}
-		$this->set('post', $this->Post->read(null, $id));
+
+        $post = $this->Post->read(null, $id);
+        $child_nav = array();
+
+//        TODO: refactor this logic to retrieve the parent and child pages of the current page being viewed.
+        if (!empty($post['ParentPost']['id'])) {
+            $child_nav[] = array('anchor' => $post['ParentPost']['title'], 'link' => '/' . $post['ParentPost']['slug']);
+
+            $children = $this->Post->children($post['ParentPost']['id'], true, null, 'Post.title');
+            foreach ($children as $child) {
+                $child_nav[] = array('anchor' => $child['Post']['title'], 'link' => '/' . $post['ParentPost']['slug'] . '/' . $child['Post']['slug']);
+            }
+        }
+        else {
+            $child_nav[] = array('anchor' => $post['Post']['title'], 'link' => '/' . $post['Post']['slug']);
+
+            $children = $this->Post->children($post['Post']['id'], true, null, 'Post.title');
+            foreach ($children as $child) {
+                $child_nav[] = array('anchor' => $child['Post']['title'], 'link' => '/' . $post['Post']['slug'] . '/' . $child['Post']['slug']);
+            }
+        }
+
+        $this->set(compact('post', 'child_nav'));
 	}
 
 /**
