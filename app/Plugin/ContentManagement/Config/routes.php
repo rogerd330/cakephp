@@ -6,6 +6,9 @@
  */
 
 App::uses('Post', 'ContentManagement.Model');
+
+$use_custom_home = false;
+
 $posts = new Post();
 $posts = $posts->find('all', array(
     'fields' => array(
@@ -14,7 +17,7 @@ $posts = $posts->find('all', array(
         'Post.type',
         'ParentPost.slug',
     ),
-    'condition' => array(
+    'conditions' => array(
         'Post.enabled' => true,
     ),
 ));
@@ -25,7 +28,13 @@ foreach ($posts as $post) {
                 Router::connect(__('/%s/%s', $post['ParentPost']['slug'], $post['Post']['slug']), array('controller' => 'Pages', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
             }
             else {
-                Router::connect(__('/%s', $post['Post']['slug']), array('controller' => 'Pages', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
+                $url = '/%s';
+                if ($post['Post']['slug'] === 'home') {
+                    $url = '/';
+                    $use_custom_home = true;
+                }
+
+                Router::connect(__($url, $post['Post']['slug']), array('controller' => 'Pages', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'));
             }
         }
         else {
@@ -35,3 +44,7 @@ foreach ($posts as $post) {
 }
 
 Router::connect('/blog/*', array('controller' => 'Posts', 'action' => 'index', 'plugin' => 'ContentManagement'));
+
+if (!$use_custom_home) {
+    Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+}
