@@ -37,7 +37,7 @@ class AppController extends Controller {
     public $layout = 'default';
 
     public $components = array(
-        'DebugKit.Toolbar',
+//        'DebugKit.Toolbar',
         'Session',
     );
 
