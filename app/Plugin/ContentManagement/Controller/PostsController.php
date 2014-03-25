@@ -42,6 +42,7 @@ class PostsController extends ContentManagementAppController {
             'limit' => 3,
         );
         $this->set('posts', $this->paginate());
+        $this->taxonomize(array('post', 'index'));
         $this->set_sidenav();
     }
 
@@ -57,6 +58,7 @@ class PostsController extends ContentManagementAppController {
 			throw new NotFoundException(__('Invalid post'));
 		}
 		$this->set('post', $this->Post->read(null, $id));
+        $this->taxonomize(array('post', __('post-%d', $id)));
         $this->set_sidenav();
 
 	}

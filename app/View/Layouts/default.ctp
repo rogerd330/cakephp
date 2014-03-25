@@ -33,7 +33,14 @@
 		echo $this->fetch('css');
 	?>
 </head>
-<body>
+<?php
+    if (!empty($body_classes)) {
+        echo $this->Html->tag('body', null, array('class' => $body_classes));
+    }
+    else {
+        echo $this->Html->tag('body', null);
+    }
+?>
 	<div class="container">
 		<div class="header">
 			<h1><?php echo $this->Html->link($option_site_title, '/'); ?></h1>

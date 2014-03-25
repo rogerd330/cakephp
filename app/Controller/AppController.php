@@ -83,6 +83,12 @@ class AppController extends Controller {
         //}
     }
 
+    protected function taxonomize($classes = null) {
+        if ($classes != null) {
+            $this->set('body_classes', $classes);
+        }
+    }
+
     private function _loadAdminNav() {
         $admin_left_nav = array();
         $admin_right_nav = array();

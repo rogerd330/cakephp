@@ -59,6 +59,7 @@ class PagesController extends ContentManagementAppController {
         }
 
         $this->set(compact('post', 'child_nav'));
+        $this->taxonomize(array('page', $post['Post']['slug']));
 	}
 
 /**
