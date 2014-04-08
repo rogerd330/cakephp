@@ -240,6 +240,10 @@ class PostsController extends ContentManagementAppController {
         $categories = $this->Category->find('list');
 
         $archives = $this->Post->find('all', array(
+            'conditions' => array(
+                'Post.type' => CMS_POST,
+                'Post.enabled' => true,
+            ),
             'fields' => 'Post.published',
             'group' => array('DATE_FORMAT(Post.published, "%Y-%m")'),
             'order' => array('Post.published' => 'DESC'),
