@@ -26,7 +26,7 @@
     <?php
         echo $this->Form->input('category_id', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
         echo $this->Form->input('slug', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
-        echo $this->element('BootstrapCheckbox', array('field' => 'Post.enabled', 'label' => 'Enabled?', 'checked' => 'checked'));
+        echo $this->element('ContentManagement.PostPublish');
     ?>
             </div>
         </div>
