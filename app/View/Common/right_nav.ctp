@@ -32,7 +32,7 @@ else {
             <h3>Archive</h3>
             <ul class="side-nav">
                 <?php foreach ($archives as $archive) : ?>
-                    <li><?php echo $this->Html->link($this->Time->format('F Y', $archive['Post']['created']), array('action' => 'index', 'archive' => $this->Time->format('Y-m', $archive['Post']['created']), 'plugin' => 'ContentManagement')) ?></li>
+                    <li><?php echo $this->Html->link($this->Time->format('F Y', $archive['Post']['published']), array('action' => 'index', 'archive' => $this->Time->format('Y-m', $archive['Post']['published']), 'plugin' => 'ContentManagement')) ?></li>
                 <?php endforeach ?>
             </ul>
         </div>

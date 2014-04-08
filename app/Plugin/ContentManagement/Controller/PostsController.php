@@ -28,8 +28,8 @@ class PostsController extends ContentManagementAppController {
         if (isset($params['archive'])) {
             list($year, $month) = explode('-', $params['archive']);
             $conditions[] = array(
-                'YEAR(Post.created)' => $year,
-                'MONTH(Post.created)' => $month,
+                'YEAR(Post.published)' => $year,
+                'MONTH(Post.published)' => $month,
             );
         }
 
@@ -37,7 +37,7 @@ class PostsController extends ContentManagementAppController {
         $this->paginate = array(
             'conditions' => $conditions,
             'order' => array(
-                'Post.created' => 'DESC',
+                'Post.published' => 'DESC',
             ),
             'limit' => 3,
         );
@@ -240,9 +240,9 @@ class PostsController extends ContentManagementAppController {
         $categories = $this->Category->find('list');
 
         $archives = $this->Post->find('all', array(
-            'fields' => 'Post.created',
-            'group' => array('DATE_FORMAT(Post.created, "%Y-%m")'),
-            'order' => array('Post.created' => 'DESC'),
+            'fields' => 'Post.published',
+            'group' => array('DATE_FORMAT(Post.published, "%Y-%m")'),
+            'order' => array('Post.published' => 'DESC'),
         ));
 
         $this->set(compact('recent', 'categories', 'archives'));
