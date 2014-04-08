@@ -52,6 +52,7 @@ class ContentManagementSchema extends CakeSchema {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'created' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => false, 'default' => null),
+		'published' => array('type' => 'datetime', 'null' => false, 'default' => null),
 		'parent_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'lft' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'rght' => array('type' => 'integer', 'null' => true, 'default' => null),
