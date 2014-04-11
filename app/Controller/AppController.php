@@ -144,6 +144,13 @@ class AppController extends Controller {
                             $nav['link']['plugin'] = Inflector::underscore($plugin);
                             $nav['link']['admin'] = true;
                         }
+
+                        if (array_key_exists('links', $nav) && is_array($nav['links'])) {
+                            for ($i = 0; $i < count($nav['links']); $i++) {
+                                $nav['links'][$i]['link']['plugin'] = Inflector::underscore($plugin);
+                                $nav['links'][$i]['link']['admin'] = true;
+                            }
+                        }
                         $admin_left_nav[] = $nav;
                     }
 
@@ -152,6 +159,13 @@ class AppController extends Controller {
                             $nav['link']['plugin'] = Inflector::underscore($plugin);
                             $nav['link']['admin'] = true;
                         }
+
+                        if (array_key_exists('links', $nav) && is_array($nav['links'])) {
+                            for ($i = 0; $i < count($nav['links']); $i++) {
+                                $nav['links'][$i]['link']['plugin'] = Inflector::underscore($plugin);
+                                $nav['links'][$i]['link']['admin'] = true;
+                            }
+                        }
                         $admin_right_nav[] = $nav;
                     }
                 }
@@ -159,6 +173,14 @@ class AppController extends Controller {
                     foreach ($plugin_nav as $nav) {
                         $nav['link']['plugin'] = Inflector::underscore($plugin);
                         $nav['link']['admin'] = true;
+
+                        if (array_key_exists('links', $nav) && is_array($nav['links'])) {
+                            for ($i = 0; $i < count($nav['links']); $i++) {
+                                $nav['links'][$i]['link']['plugin'] = Inflector::underscore($plugin);
+                                $nav['links'][$i]['link']['admin'] = true;
+                            }
+                        }
+
                         $admin_left_nav[] = $nav;
                     }
                 }
