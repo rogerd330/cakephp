@@ -115,6 +115,20 @@ class Post extends ContentManagementAppModel {
         ),
 	);
 
+/**
+ * hasOne associations
+ * @var array
+ */
+    public $hasOne = array(
+        'Meta' => array(
+            'className' => 'ContentManagement.Meta',
+            'foreignKey' => 'model_id',
+            'conditions' => array('model' => 'Post'),
+            'fields' => '',
+            'order' => '',
+        ),
+    );
+
     public function beforeSave($options = array()) {
         if (empty($this->data['Post']['slug']) && !empty($this->data['Post']['title'])) {
             $strings = new Strings();
