@@ -39,6 +39,22 @@ class AppController extends Controller {
     public $components = array(
 //        'DebugKit.Toolbar',
         'Session',
+        'Auth' => array(
+            'loginAction' => array('controller' => 'users', 'action' => 'login', 'plugin' => 'users', 'admin' => false),
+            'loginRedirect' => array('controller' => 'pages', 'action' => 'index', 'plugin' => 'content_management', 'admin' => true),
+            'authError' => 'You must login first!',
+            'flash' => array('element' => 'flash_message', 'key' => 'auth', 'params' => array()),
+            'authenticate' => array(
+                'Blowfish' => array(
+                    'fields' => array(
+                        'username' => 'login',
+                    ),
+                    'scope' => array(
+                        'enabled' => true,
+                    )
+                )
+            ),
+        ),
     );
 
     public $helpers = array(
