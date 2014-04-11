@@ -166,7 +166,8 @@ class PagesController extends ContentManagementAppController {
 		if ($this->request->is('post')) {
 			$this->Post->create();
 			if ($this->Post->save($this->request->data)) {
-				$this->setFlash(__('The page has been saved'));
+                $this->saveMeta('Post', $this->Post->id, $this->request->data);
+                $this->setFlash(__('The page has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->setFlash(__('The page could not be saved. Please, try again.'), false);
@@ -190,7 +191,8 @@ class PagesController extends ContentManagementAppController {
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Post->save($this->request->data)) {
-				$this->setFlash(__('The page has been saved'));
+                $this->saveMeta('Post', $id, $this->request->data);
+                $this->setFlash(__('The page has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->setFlash(__('The page could not be saved. Please, try again.'), false);
@@ -200,7 +202,8 @@ class PagesController extends ContentManagementAppController {
 		}
 
         $parents = $this->Post->generateTreeList(array('Post.type' => CMS_PAGE, 'Post.id !=' => $id));
-        $this->set(compact('parents'));
+        $meta = $this->getMeta('Post', $id);
+        $this->set(compact('parents', 'meta'));
 	}
 
 /**

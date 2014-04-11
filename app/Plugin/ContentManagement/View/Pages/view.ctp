@@ -8,6 +8,7 @@
     $this->extend($page_template);
 ?>
 <?php $this->assign('title', $post['Post']['title']) ?>
+<?php $this->OpenGraph->assign($post) ?>
 
 <div class="posts view">
     <h2><?php echo h($post['Post']['title']); ?></h2>

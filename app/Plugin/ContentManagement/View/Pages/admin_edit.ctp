@@ -18,23 +18,25 @@
 		echo $this->Form->input('title', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
 		echo $this->Form->input('excerpt', array('rows' => 2, 'div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
 		echo $this->Form->input('body', array('required' => false, 'rows' => 5, 'div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control ckeditor', 'error' => array('attributes' => array('class' => 'help-block'))));
-	?>
+        echo $this->element('ContentManagement.MetaData');
+    ?>
             </div>
             <div class="col-lg-3">
+                <div class="form-group form-actions">
+                    <?php
+                    echo $this->Form->button(__('Save Changes'), array('type' => 'submit', 'class' => 'btn btn-primary'));
+                    echo '&nbsp;';
+                    echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));
+                    ?>
+                </div>
     <?php
-    echo $this->Form->input('parent_id', array('empty' => '(Choose one)', 'div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
-    echo $this->Form->input('slug', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
-    echo $this->element('ContentManagement.PostPublish');
+        echo $this->Form->input('parent_id', array('empty' => '(Choose one)', 'div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
+        echo $this->Form->input('slug', array('div' => 'form-group', 'label' => array('class' => 'control-label'), 'class' => 'form-control', 'error' => array('attributes' => array('class' => 'help-block'))));
+        echo $this->element('ContentManagement.PostPublish');
     ?>
             </div>
         </div>
 	</fieldset>
-		<div class="form-group form-actions">
-	<?php
-		echo $this->Form->button(__('Save Changes'), array('type' => 'submit', 'class' => 'btn btn-primary'));
-		echo '&nbsp;';
-		echo $this->Html->link(__('Cancel'), array('action' => 'index'), array('class' => 'btn btn-default'));
-	?>
-		</div>	
+
 <?php echo $this->Form->end();?>
 		</div>
