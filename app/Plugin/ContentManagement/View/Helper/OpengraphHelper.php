@@ -30,7 +30,7 @@ class OpengraphHelper extends AppHelper {
         }
     }
 
-    public function header($options = array()) {
+    public function meta($options = array()) {
         $defaults = array(
             'og:title' => 'Another WhyteSpyder production',
             'og:site_name' => 'A CakeCMS Website',
@@ -44,7 +44,7 @@ class OpengraphHelper extends AppHelper {
 
         foreach ($metas as $k => $v) {
             if (!empty($v)) {
-                echo $this->Html->tag('meta', null, array('property' => $k, 'content' => $v));
+                $this->Html->meta(array('name' => $k, 'content' => $v), null, array('inline' => false));
             }
         }
     }
