@@ -9,6 +9,11 @@ class PagesController extends ContentManagementAppController {
 
     public $uses = array('ContentManagement.Post');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('index', 'view');
+    }
+
 /**
  * index method
  *

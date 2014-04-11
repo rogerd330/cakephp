@@ -8,6 +8,11 @@ App::uses('ContentManagementAppController', 'ContentManagement.Controller');
 class PostsController extends ContentManagementAppController {
 
     public $uses = array('ContentManagement.Post', 'ContentManagement.Category');
+
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('index', 'view');
+    }
 /**
  * index method
  *
