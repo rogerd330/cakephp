@@ -33,8 +33,9 @@ class OpengraphHelper extends AppHelper {
         $metas = array_merge($defaults, $options);
 
         foreach ($metas as $k => $v) {
-            echo $this->Html->tag('meta', null, array('property' => $k, 'content' => $v));
-
+            if (!empty($v)) {
+                echo $this->Html->tag('meta', null, array('property' => $k, 'content' => $v));
+            }
         }
     }
 }
