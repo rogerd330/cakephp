@@ -48,6 +48,7 @@ class AppController extends Controller {
 
     public $uses = array(
         'ContentManagement.Option',
+        'ContentManagement.Meta'
     );
 
     function beforeRender() {
@@ -81,6 +82,32 @@ class AppController extends Controller {
         //if (!$isSuccess) {
         //	$this->log('An error occurred', $msg, 3);
         //}
+    }
+
+    protected function saveMeta($model, $model_id, $data = array()) {
+        $meta_data = array(
+            'model' => $model,
+            'model_id' => $model_id,
+            'title' => $data['Meta']['title'],
+            'description' => $data['Meta']['description'],
+            'keywords' => $data['Meta']['keywords'],
+        );
+
+        if (array_key_exists('id', $data['Meta'])) {
+            $meta_data['id'] = $data['Meta']['id'];
+        }
+
+        return $this->Meta->save($meta_data);
+    }
+
+    protected function getMeta($model, $model_id) {
+        $meta_data = $this->Meta->find('first', array(
+            'conditions' => array(
+                'Meta.model' => $model,
+                'Meta.model_id' => $model_id,
+            ),
+        ));
+        return $meta_data;
     }
 
     protected function taxonomize($classes = null) {
