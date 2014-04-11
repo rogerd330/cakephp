@@ -12,12 +12,22 @@ class OpengraphHelper extends AppHelper {
 
     public $description = null;
 
-    public function meta($tag, $url, $options) {
-        if (strcmp($tag, 'description') == 0) {
-            $this->description = $url;
-        }
+    public function assign($data) {
+        if (array_key_exists('Meta', $data)) {
+            if (!empty($data['Meta']['title'])) {
+                $this->_View->assign('page_title', $data['Meta']['title']);
+            }
 
-        $this->Html->meta($tag, $url, $options);
+            if (!empty($data['Meta']['description'])) {
+                $this->description = $data['Meta']['description'];
+                $this->Html->meta('description', $this->description, array('inline' => false));
+                $this->Html->meta(array('name' => 'og:description', 'content' => $this->description), null, array('inline' => false));
+            }
+
+            if (!empty($data['Meta']['keywords'])) {
+                $this->Html->meta('keywords', $data['Meta']['keywords'], array('inline' => false));
+            }
+        }
     }
 
     public function header($options = array()) {
