@@ -30,6 +30,10 @@
 		echo $this->Html->css(array('bootstrap.min.css'));
 
 		echo $this->fetch('meta');
+        echo $this->Opengraph->header(array(
+            'og:title' => $title_for_layout,
+            'og:site_name' => $option_site_title,
+        ));
 		echo $this->fetch('css');
 	?>
 </head>
