@@ -15,7 +15,6 @@ class ContentManagementAppController extends AppController {
                 array('anchor' => 'Settings', 'dropdown' => true, 'links' => array(
                    array('anchor' => 'Options', 'link' => array('controller' => 'Options', 'action' => 'index')),
                 )),
-                array('anchor' => 'Log Out', 'link' => array('controller' => 'users', 'action' => 'logout')),
             )
         );
         return $nav;
