@@ -19,4 +19,22 @@ class OpengraphHelper extends AppHelper {
 
         $this->Html->meta($tag, $url, $options);
     }
+
+    public function header($options = array()) {
+        $defaults = array(
+            'og:title' => 'Another WhyteSpyder production',
+            'og:site_name' => 'A CakeCMS Website',
+            'og:description' => $this->description,
+            'og:type' => 'website',
+            'og:url' => Router::url(null, true),
+            'og:image' => __('%simg/og-logo.jpg', Router::url('/', true)),
+        );
+
+        $metas = array_merge($defaults, $options);
+
+        foreach ($metas as $k => $v) {
+            echo $this->Html->tag('meta', null, array('property' => $k, 'content' => $v));
+
+        }
+    }
 }
