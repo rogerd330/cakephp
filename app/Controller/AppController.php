@@ -45,14 +45,15 @@ class AppController extends Controller {
             'authError' => 'You must login first!',
             'flash' => array('element' => 'flash_message', 'key' => 'auth', 'params' => array()),
             'authenticate' => array(
-                'Blowfish' => array(
+                'Form' => array(
+                    'passwordHasher' => 'Blowfish',
                     'fields' => array(
                         'username' => 'login',
                     ),
                     'scope' => array(
                         'enabled' => true,
                     )
-                )
+                ),
             ),
         ),
     );
