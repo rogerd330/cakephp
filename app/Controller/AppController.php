@@ -44,6 +44,7 @@ class AppController extends Controller {
     public $helpers = array(
         'BootstrapNavbar',
         'Time',
+        'ContentManagement.Opengraph',
     );
 
     public $uses = array(
