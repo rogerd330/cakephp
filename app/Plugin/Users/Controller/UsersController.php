@@ -16,6 +16,31 @@ class UsersController extends UsersAppController {
 	public $components = array('Paginator');
 
 /**
+ * login method
+ *
+ * @return void
+ */
+    public function login() {
+        if ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                $this->redirect($this->Auth->redirect());
+            }
+            else {
+                $this->setFlash('Invalid e-mail address or password!', false);
+            }
+        }
+    }
+
+/**
+ * admin_logout method
+ *
+ * @return void
+ */
+    public function admin_logout() {
+        $this->redirect($this->Auth->logout());
+    }
+
+/**
  * admin_index method
  *
  * @return void
