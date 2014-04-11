@@ -15,8 +15,8 @@
         'type' => 'datetime',
         'label' => 'Publish on',
         'empty' => false,
-        'class' => 'form-control',
-        'div' => 'form-group',
+        'class' => 'form-control input-sm',
+        'div' => 'published-controls form-group',
         'minYear' => date('Y') - 5,
         'maxYear' => date('Y') + 5
     ));
