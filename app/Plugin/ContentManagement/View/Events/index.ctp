@@ -9,7 +9,7 @@
                 <h3 class="title"><?php echo h($event['Event']['title']); ?></h3>
 
                 <div class="timestamp">
-                    <?php echo h($event['Event']['starts']); ?> - <?php echo h($event['Event']['ends']); ?>
+                    <?php echo h($event['Event']['timestamp']); ?>
                 </div>
 
                 <p class="body">
