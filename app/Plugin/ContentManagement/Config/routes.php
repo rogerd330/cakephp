@@ -45,6 +45,9 @@ foreach ($posts as $post) {
 
 Router::connect('/blog/*', array('controller' => 'Posts', 'action' => 'index', 'plugin' => 'ContentManagement'));
 
+// Uncomment the Events route below if the site needs that functionality.
+//Router::connect('/events', array('controller' => 'Events', 'action' => 'index', 'plugin' => 'ContentManagement'));
+
 if (!$use_custom_home) {
     Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 }
