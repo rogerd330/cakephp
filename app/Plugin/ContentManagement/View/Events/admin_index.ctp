@@ -3,21 +3,14 @@
 	<h2><?php echo __('Events');?></h2>
 	
 	<div class="btn-group">
-		<a class="btn btn-primary" href="#"><?php echo __('Actions'); ?></a>
-		<a class="btn btn-primary dropdown-toggle" href="#" data-toggle="dropdown">
-			<span class="caret"></span>
-		</a>		
-		<ul class="dropdown-menu">
-			<li><?php echo $this->Html->link(__('<i class="icon-plus"></i> New Event'), array('action' => 'add'), array('escape' => false)); ?></li>
-			</ul>
-	</div>	
+        <?php echo $this->Html->link(__('<i class="glyphicon glyphicon-plus"></i> New Event'), array('action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>
+	</div>
 	
 	<br />
 	
 	<table class="table table-striped table-bordered table-condensed">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
             <th><?php echo $this->Paginator->sort('title');?></th>
             <th><?php echo $this->Paginator->sort('starts');?></th>
 			<th><?php echo $this->Paginator->sort('enabled');?></th>
@@ -28,14 +21,12 @@
 	<?php
 	foreach ($events as $event): ?>
 	<tr>
-		<td><?php echo h($event['Event']['id']); ?>&nbsp;</td>
         <td><?php echo h($event['Event']['title']); ?>&nbsp;</td>
-        <td><?php echo h($event['Event']['starts']); ?>&nbsp;</td>
-		<td class="align_center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $event['Event']['enabled'])) ?></td>
+        <td><?php echo $this->Time->format('M d, Y g:ia', $event['Event']['starts']); ?></td>
+		<td class="text-center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $event['Event']['enabled'])) ?></td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('<i class="icon-eye-open"></i> View'), array('action' => 'view', $event['Event']['id']), array('escape' => false, 'class' => 'btn')); ?>
-			<?php echo $this->Html->link(__('<i class="icon-pencil"></i> Edit'), array('action' => 'edit', $event['Event']['id']), array('escape' => false, 'class' => 'btn')); ?>
-			<?php echo $this->Form->postLink(__('<i class="icon-trash icon-white"></i> Delete'), array('action' => 'delete', $event['Event']['id']), array('escape' => false, 'class' => 'btn btn-danger'), __('Are you sure you want to delete # %s?', $event['Event']['id'])); ?>
+			<?php echo $this->Html->link(__('<i class="glyphicon glyphicon-pencil"></i> Edit'), array('action' => 'edit', $event['Event']['id']), array('escape' => false, 'class' => 'btn btn-default')); ?>
+			<?php echo $this->Form->postLink(__('<i class="glyphicon glyphicon-trash icon-white"></i> Delete'), array('action' => 'delete', $event['Event']['id']), array('escape' => false, 'class' => 'btn btn-danger'), __('Are you sure you want to delete # %s?', $event['Event']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -48,13 +39,12 @@
 	));
 	?>	</p>
 
-	<div class="pagination">
-        <ul>
-	<?php
-		echo $this->Paginator->prev('&larr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled'));
-		echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li'));
-		echo $this->Paginator->next('&rarr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled'));
-	?>
-        </ul>
+    <ul class="pagination">
+        <?php
+        echo $this->Paginator->prev('&larr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));
+        echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentTag' => 'a', 'currentClass' => 'active'));
+        echo $this->Paginator->next('&rarr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));
+        ?>
+    </ul>
 	</div>
 </div>
