@@ -5,6 +5,8 @@ App::uses('ContentManagementAppModel', 'ContentManagement.Model');
  *
  */
 class Event extends ContentManagementAppModel {
+
+    public $order = array('Event.starts' => 'DESC');
 /**
  * Validation rules
  *
