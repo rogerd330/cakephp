@@ -15,6 +15,12 @@ class EventsController extends ContentManagementAppController {
  */
 	public function index() {
 		$this->Event->recursive = 0;
+        $this->paginate = array(
+            'conditions' => array(
+                'Event.enabled' => true,
+            )
+        );
+
 		$this->set('events', $this->paginate());
 	}
 
