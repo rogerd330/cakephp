@@ -21,7 +21,7 @@ class OpengraphHelper extends AppHelper {
             if (!empty($data['Meta']['description'])) {
                 $this->description = $data['Meta']['description'];
                 $this->Html->meta('description', $this->description, array('inline' => false));
-                $this->Html->meta(array('name' => 'og:description', 'content' => $this->description), null, array('inline' => false));
+                $this->Html->meta(array('property' => 'og:description', 'content' => $this->description), null, array('inline' => false));
             }
 
             if (!empty($data['Meta']['keywords'])) {
@@ -44,7 +44,7 @@ class OpengraphHelper extends AppHelper {
 
         foreach ($metas as $k => $v) {
             if (!empty($v)) {
-                $this->Html->meta(array('name' => $k, 'content' => $v), null, array('inline' => false));
+                $this->Html->meta(array('property' => $k, 'content' => $v), null, array('inline' => false));
             }
         }
     }
