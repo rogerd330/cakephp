@@ -32,4 +32,10 @@ class FormsController extends ContentManagementAppController {
         }
         $this->redirect($params['redirect']);
     }
+
+    private function isSpam($content, $author = null, $email = null, $url = null, $permalink = null, $type = null) {
+        $akismet = new TijsVerkoyen\Akismet\Akismet(Configure::read('akismet_key'), Router::url('/', true));
+        $result = $akismet->isSpam($content, $author, $email, $url, $permalink, $type);
+        return $result;
+    }
 }
