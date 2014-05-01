@@ -1,0 +1,5 @@
+{
+	"require": {
+		"tijsverkoyen/akismet": "1.1.0"
+	}
+}
