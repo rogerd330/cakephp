@@ -36,6 +36,7 @@
         echo $this->fetch('meta');
         echo $this->fetch('css');
 	?>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <?php
     if (!empty($body_classes)) {
