@@ -22,6 +22,22 @@ class FormsController extends ContentManagementAppController {
 //        ));
 //    }
 
+    public function comments() {
+        $form = $this->request->data['Form'];
+        if (!$this->isSpam($form['message'], $form['fullname'], $form['email'], $form['url'])) {
+            $this->postback(array(
+                'event_name' => 'Form.comments',
+                'success' => 'Thank you! Your comment has been submitted.',
+                'redirect' => '/blog/',
+            ));
+        }
+        else {
+            $this->setFlash("I'm sorry, but your message looked like spam, so it was not sent.", false);
+            $this->redirect('/blog/');
+        }
+
+    }
+
     private function postback($params = null) {
         if ($params == null) {
             throw new InvalidArgumentException();

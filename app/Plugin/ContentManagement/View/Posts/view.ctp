@@ -11,5 +11,7 @@
     <div class="body">
         <?php echo $post['Post']['body']; ?>
     </div>
+
+    <?php echo $this->element('ContentManagement.BlogComment') ?>
 </div>
 

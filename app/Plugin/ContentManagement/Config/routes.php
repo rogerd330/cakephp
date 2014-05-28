@@ -51,3 +51,5 @@ Router::connect('/blog/*', array('controller' => 'Posts', 'action' => 'index', '
 if (!$use_custom_home) {
     Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 }
+
+Router::connect('/form/comments', array('controller' => 'forms', 'action' => 'comments', 'plugin' => 'ContentManagement'));
