@@ -11,8 +11,22 @@ class PostsController extends ContentManagementAppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('index', 'view');
+        $this->Auth->allow('widget_post', 'index', 'view');
     }
+
+/**
+ * widget_post method
+ *
+ * @param $slug
+ */
+    public function widget_post($slug) {
+        $post = $this->Post->findBySlug($slug);
+        if (empty($post)) {
+            throw new NotFoundException(__('Invalid post slug "%s".', $slug));
+        }
+        return $post;
+    }
+
 /**
  * index method
  *
