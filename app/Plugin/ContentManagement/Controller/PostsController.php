@@ -20,7 +20,22 @@ class PostsController extends ContentManagementAppController {
  * @param $slug
  */
     public function widget_post($slug) {
-        $post = $this->Post->findBySlug($slug);
+        $post = null;
+
+        if (strpos($slug, '.') !== false) {
+            list($parent, $child) = explode('.', $slug);
+
+            $post = $this->Post->find('first', array(
+                'conditions' => array(
+                    'ParentPost.slug' => $parent,
+                    'Post.slug' => $child,
+                ),
+            ));
+        }
+        else {
+            $post = $this->Post->findBySlug($slug);
+        }
+
         if (empty($post)) {
             throw new NotFoundException(__('Invalid post slug "%s".', $slug));
         }
