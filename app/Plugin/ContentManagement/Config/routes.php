@@ -5,6 +5,8 @@
  * 3/6/14 9:48 PM
  */
 
+Router::connect('/admin', array('controller' => 'Pages', 'action' => 'index', 'admin' => true, 'plugin' => 'ContentManagement'));
+
 App::uses('Post', 'ContentManagement.Model');
 
 $use_custom_home = false;
