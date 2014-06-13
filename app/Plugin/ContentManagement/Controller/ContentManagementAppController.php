@@ -12,6 +12,7 @@ class ContentManagementAppController extends AppController {
                 array('anchor' => 'Categories', 'link' => array('controller' => 'Categories', 'action' => 'index')),
             ),
             'right' => array(
+                array('anchor' => 'View Site', 'link' => '/', 'options' => array('target' => '_blank')),
                 array('anchor' => 'Settings', 'dropdown' => true, 'links' => array(
                    array('anchor' => 'Options', 'link' => array('controller' => 'Options', 'action' => 'index')),
                 )),
