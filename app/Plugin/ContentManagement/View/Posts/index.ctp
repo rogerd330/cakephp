@@ -28,9 +28,11 @@
     <?php if ($this->params['paging']['Post']['pageCount'] > 1) : ?>
         <ul class="pagination">
             <?php
-            echo $this->Paginator->prev('&larr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));
-            echo $this->Paginator->numbers(array('separator' => '', 'tag' => 'li', 'currentTag' => 'a', 'currentClass' => 'active'));
-            echo $this->Paginator->next('&rarr;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));
+            echo $this->Paginator->first('&lt;&lt;', array('tag' => 'li', 'class' => 'page-first', 'escape' => false));
+            echo $this->Paginator->prev('&lt;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));
+            echo $this->Paginator->numbers(array('modulus' => 4, 'first' => 3, 'last' => 3, 'escape' => false, 'ellipsis' => '<li><a>&hellip;</a></li>', 'separator' => false, 'tag' => 'li', 'currentTag' => 'a', 'currentClass' => 'active'));
+            echo $this->Paginator->next('&gt;', array('tag' => 'li', 'escape' => false), null, array('tag' => 'li', 'escape' => false, 'class' => 'disabled', 'disabledTag' => 'a'));
+            echo $this->Paginator->last('&gt;&gt;', array('tag' => 'li', 'class' => 'page-last', 'escape' => false));
             ?>
         </ul>
     <?php endif ?>
