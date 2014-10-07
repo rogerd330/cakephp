@@ -27,7 +27,7 @@
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css(array('bootstrap.min.css'));
+		echo $this->Html->css(array('bootstrap.min.css', 'app.css'));
 
         echo $this->Opengraph->meta(array(
             'og:title' => $title_for_layout,
