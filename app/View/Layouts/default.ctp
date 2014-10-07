@@ -65,7 +65,7 @@
 	</div>
 
     <?php
-        echo $this->Html->script(array('http://code.jquery.com/jquery-1.10.1.min.js', 'http://code.jquery.com/jquery-migrate-1.2.1.min.js', 'bootstrap.min.js'));
+        echo $this->Html->script(array('http://code.jquery.com/jquery-1.10.1.min.js', 'http://code.jquery.com/jquery-migrate-1.2.1.min.js', 'bootstrap.min.js', 'plugins.js', 'app.js'));
         echo $this->fetch('script');
     ?>
 </body>
