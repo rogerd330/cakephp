@@ -14,10 +14,6 @@ class OpengraphHelper extends AppHelper {
 
     public function assign($data) {
         if (array_key_exists('Meta', $data)) {
-            if (!empty($data['Meta']['title'])) {
-                $this->_View->assign('page_title', $data['Meta']['title']);
-            }
-
             if (!empty($data['Meta']['description'])) {
                 $this->description = $data['Meta']['description'];
                 $this->Html->meta('description', $this->description, array('inline' => false));

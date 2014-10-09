@@ -64,6 +64,7 @@ class PagesController extends ContentManagementAppController {
         }
 
         $this->set(compact('post', 'child_nav'));
+        $this->set('title_for_layout', !empty($post['Meta']['title']) ? $post['Meta']['title'] : $post['Post']['title']);
         $this->taxonomize(array('page', $post['Post']['slug']));
 	}
 
