@@ -1,6 +1,10 @@
 <?php
     $page_template = '/Common/left_nav';
 
+    if (!empty($post['ParentPost']['slug']) && file_exists(APP . 'View' . DS . 'Common' . DS . $post['ParentPost']['slug'] . '.ctp')) {
+        $page_template = '/Common' . DS . $post['ParentPost']['slug'];
+    }
+
     if (file_exists(APP . 'View' . DS . 'Common' . DS . $post['Post']['slug'] . '.ctp')) {
         $page_template = '/Common' . DS . $post['Post']['slug'];
     }
