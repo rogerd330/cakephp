@@ -11,7 +11,6 @@
 	<table class="table table-striped table-bordered table-condensed">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
             <th><?php echo $this->Paginator->sort('title');?></th>
 			<th><?php echo $this->Paginator->sort('parent_id');?></th>
@@ -23,7 +22,6 @@
 	<?php
 	foreach ($posts as $post): ?>
 	<tr>
-		<td><?php echo h($post['Post']['id']); ?>&nbsp;</td>
 		<td><?php echo h($post['Post']['created']); ?>&nbsp;</td>
         <td><?php echo h($post['Post']['title']); ?>&nbsp;</td>
 		<td>

@@ -10,7 +10,6 @@
 	<table class="table table-striped table-bordered table-condensed">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('name');?></th>
 			<th><?php echo $this->Paginator->sort('autoload');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -20,7 +19,6 @@
 	<?php
 	foreach ($options as $option): ?>
 	<tr>
-		<td><?php echo h($option['Option']['id']); ?>&nbsp;</td>
 		<td><?php echo h($option['Option']['name']); ?>&nbsp;</td>
 		<td class="text-center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $option['Option']['autoload'])) ?></td>
 		<td class="actions">

@@ -12,7 +12,6 @@
 	<table class="table table-striped table-bordered table-condensed">
 	<thead>
 	<tr>
-        <th><?php echo $this->Paginator->sort('id');?></th>
         <th><?php echo $this->Paginator->sort('name');?></th>
         <th><?php echo $this->Paginator->sort('parent_id');?></th>
         <th class="actions"><?php echo __('Actions');?></th>
@@ -22,7 +21,6 @@
 	<?php
 	foreach ($categories as $category): ?>
 	<tr>
-		<td><?php echo h($category['Category']['id']); ?>&nbsp;</td>
         <td><?php echo h($category['Category']['name']); ?>&nbsp;</td>
 		<td><?php echo h($category['ParentCategory']['name']); ?>&nbsp;</td>
 		<td class="actions">
