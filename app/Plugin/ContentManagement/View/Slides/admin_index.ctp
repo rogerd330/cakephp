@@ -10,15 +10,11 @@
 	<table class="table table-striped table-bordered table-condensed">
 	<thead>
 	<tr>
-			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('image');?></th>
-			<th><?php echo $this->Paginator->sort('link');?></th>
+            <th><?php echo $this->Paginator->sort('title');?></th>
 			<th><?php echo $this->Paginator->sort('position');?></th>
-			<th><?php echo $this->Paginator->sort('enabled');?></th>
-			<th><?php echo $this->Paginator->sort('created');?></th>
-			<th><?php echo $this->Paginator->sort('modified');?></th>
-			<th><?php echo $this->Paginator->sort('placement');?></th>
-			<th><?php echo $this->Paginator->sort('title');?></th>
+            <th><?php echo $this->Paginator->sort('placement');?></th>
+            <th><?php echo $this->Paginator->sort('enabled');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	</thead>
@@ -26,15 +22,11 @@
 	<?php
 	foreach ($slides as $slide): ?>
 	<tr>
-		<td><?php echo h($slide['Slide']['id']); ?>&nbsp;</td>
-		<td><?php echo h($slide['Slide']['image']); ?>&nbsp;</td>
-		<td><?php echo h($slide['Slide']['link']); ?>&nbsp;</td>
-		<td><?php echo h($slide['Slide']['position']); ?>&nbsp;</td>
-		<td><?php echo h($slide['Slide']['enabled']); ?>&nbsp;</td>
-		<td><?php echo h($slide['Slide']['created']); ?>&nbsp;</td>
-		<td><?php echo h($slide['Slide']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($slide['Slide']['placement']); ?>&nbsp;</td>
-		<td><?php echo h($slide['Slide']['title']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($this->Html->image('/files/slides/' . $slide['Slide']['image'], array('width' => 200)), $slide['Slide']['link'], array('target' => '_blank', 'escape' => false)); ?>&nbsp;</td>
+        <td><?php echo h($slide['Slide']['title']); ?>&nbsp;</td>
+		<td class="text-center"><?php echo h($slide['Slide']['position']); ?>&nbsp;</td>
+        <td><?php echo h($slide['Slide']['placement']); ?>&nbsp;</td>
+        <td class="text-center"><?php echo $this->element('BootstrapBoolean', array('enabled' => $slide['Slide']['enabled'])); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('<i class="glyphicon glyphicon-eye-open"></i> View'), array('action' => 'view', $slide['Slide']['id']), array('escape' => false, 'class' => 'btn btn-default')); ?>
 			<?php echo $this->Html->link(__('<i class="glyphicon glyphicon-pencil"></i> Edit'), array('action' => 'edit', $slide['Slide']['id']), array('escape' => false, 'class' => 'btn btn-default')); ?>
