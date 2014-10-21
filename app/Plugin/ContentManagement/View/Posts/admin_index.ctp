@@ -24,7 +24,7 @@
 	<?php
 	foreach ($posts as $post): ?>
 	<tr>
-		<td><?php echo h($post['Post']['published']); ?>&nbsp;</td>
+		<td><?php echo $this->Time->format('M d, Y g:ia', $post['Post']['published']); ?>&nbsp;</td>
         <td><?php echo h($post['Post']['title']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($post['Category']['name'], array('controller' => 'categories', 'action' => 'view', $post['Category']['id'])); ?>
