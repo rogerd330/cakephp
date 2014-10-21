@@ -6,11 +6,31 @@ App::uses('ContentManagementAppModel', 'ContentManagement.Model');
  */
 class Slide extends ContentManagementAppModel {
 /**
+ * Image Path field
+ *
+ * Where images are stored when uploaded.
+ *
+ * @var string
+ */
+    public $image_path = 'slides/';
+
+/**
  * Display field
  *
  * @var string
  */
 	public $displayField = 'title';
+
+/*
+ * Order field
+ *
+ * @var array
+ * */
+    public $order = array(
+        'Slide.placement' => 'ASC',
+        'Slide.position' => 'ASC',
+    );
+
 /**
  * Validation rules
  *
@@ -26,6 +46,10 @@ class Slide extends ContentManagementAppModel {
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+            'extension' => array(
+                'rule' => array('extension', array('gif', 'jpg', 'jpeg', 'png')),
+                'message' => 'Choose a valid image format (gif, jpg or png)',
+            ),
 		),
 		'link' => array(
 			'notEmpty' => array(

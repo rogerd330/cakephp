@@ -47,7 +47,10 @@ class SlidesController extends ContentManagementAppController {
 	public function admin_add() {
 		if ($this->request->is('post')) {
 			$this->Slide->create();
-			if ($this->Slide->save($this->request->data)) {
+
+            $this->request->data['Slide']['image'] = $this->Upload->store($this->request->data['Slide']['image'], $this->Slide->image_path);
+
+            if ($this->Slide->save($this->request->data)) {
 				$this->setFlash(__('The slide has been saved'));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -68,6 +71,16 @@ class SlidesController extends ContentManagementAppController {
 			throw new NotFoundException(__('Invalid slide'));
 		}
 		if ($this->request->is('post') || $this->request->is('put')) {
+
+            $this->request->data['Slide']['image'] = $this->Upload->store($this->request->data['Slide']['image'], $this->Slide->image_path);
+            if ($this->request->data['Slide']['image'] === false) {
+                $this->Slide->validator()->getField('image')->getRule('notempty')->required = true;
+                $this->Slide->validator()->getField('image')->getRule('notempty')->message = 'Choose a smaller product image';
+            }
+            if ($this->request->data['Slide']['image'] == null) {
+                unset($this->request->data['Slide']['image']);
+            }
+
 			if ($this->Slide->save($this->request->data)) {
 				$this->setFlash(__('The slide has been saved'));
 				$this->redirect(array('action' => 'index'));
