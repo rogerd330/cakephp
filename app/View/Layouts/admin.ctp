@@ -28,7 +28,13 @@
         <?php echo $this->fetch('content'); ?>
     </div>
 
-    <?php echo $this->Html->script(array('//code.jquery.com/jquery-1.9.1.min.js', 'bootstrap.min.js', 'ckeditor/ckeditor.js', 'ckfinder/ckfinder.js', 'admin.js')) ?>
+    <?php echo $this->Html->script(array(
+        '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
+        'bootstrap.min.js',
+        'ckeditor/ckeditor.js',
+        'ckfinder/ckfinder.js',
+        'admin.js'
+    )) ?>
 
     <?php //echo $this->element('sql_dump'); ?>
 </body>
