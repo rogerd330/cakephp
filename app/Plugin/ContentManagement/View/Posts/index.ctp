@@ -11,14 +11,7 @@
                 Posted on <span class="timestamp"><?php echo $this->Time->format('F jS, Y', $post['Post']['created']) ?></span> in <span class="category"><?php echo $post['Category']['name'] ?></span>
             </div>
             <p class="excerpt">
-                <?php if (!empty($post['Post']['excerpt'])) : ?>
-                    <?php echo h($post['Post']['excerpt']); ?>
-                <?php else : ?>
-                    <?php
-                    preg_match('/<p>(.*?)<\/p>/s', $post['Post']['body'], $paragraphs);
-                    echo $paragraphs[1];
-                    ?>
-                <?php endif ?>
+                <?php echo $post['Post']['excerpt']; ?>
             </p>
 
             <?php echo $this->Html->link('Read more', array('controller' => 'Posts', 'action' => 'view', $post['Post']['id'], 'plugin' => 'content_management'), array('class' => 'btn btn-default')) ?>

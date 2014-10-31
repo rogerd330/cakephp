@@ -17,4 +17,12 @@ class Strings {
         $slug = trim($slug, '-');
         return $slug;
     }
+
+    public function get_excerpt($full, $current = null) {
+        $excerpt = strip_tags($current ? $current : $full);
+        if (strlen($excerpt) > 255) {
+            $excerpt = substr($excerpt, 0, 252) . '&hellip;';
+        }
+        return $excerpt;
+    }
 }

@@ -136,4 +136,15 @@ class Post extends ContentManagementAppModel {
         }
         return true;
     }
+
+    public function afterFind($results, $primary = false) {
+        foreach ($results as $k => $v) {
+            if (isset($v['Post']) && isset($v['Post']['body'])) {
+                $strings = new Strings();
+                $results[$k]['Post']['excerpt'] = $strings->get_excerpt($v['Post']['body'], $v['Post']['excerpt']);
+            }
+        }
+
+        return $results;
+    }
 }
