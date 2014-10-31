@@ -46,6 +46,7 @@ foreach ($posts as $post) {
 }
 
 Router::connect('/blog/*', array('controller' => 'Posts', 'action' => 'index', 'plugin' => 'ContentManagement'));
+Router::connect('/search/*', array('controller' => 'Searches', 'action' => 'index', 'plugin' => 'ContentManagement'));
 
 // Uncomment the Events route below if the site needs that functionality.
 //Router::connect('/events', array('controller' => 'Events', 'action' => 'index', 'plugin' => 'ContentManagement'));

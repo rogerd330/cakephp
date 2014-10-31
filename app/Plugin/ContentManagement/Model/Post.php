@@ -7,10 +7,20 @@ App::uses('ContentManagementAppModel', 'ContentManagement.Model');
  */
 class Post extends ContentManagementAppModel {
 
-    public $actsAs = array('Tree');
+    public $actsAs = array(
+        'Tree',
+        'Search.Searchable',
+    );
 
     public $order = array(
         'Post.published' => 'DESC',
+    );
+
+    public $filterArgs = array(
+        'title' => array(
+            'type' => 'like',
+            'field' => 'title',
+        ),
     );
 
 /**

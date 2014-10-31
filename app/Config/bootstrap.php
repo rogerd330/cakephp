@@ -109,6 +109,9 @@ CakeLog::config('error', array(
 App::import('Vendor', array('file' => 'autoload'));
 
 //CakePlugin::load('DebugKit');
+
+CakePlugin::load('Search');
+
 CakePlugin::load('ContentManagement', array('bootstrap' => true, 'routes' => true));
 
 CakePlugin::load('Users', array('bootstrap' => false, 'routes' => true));

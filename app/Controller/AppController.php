@@ -38,6 +38,8 @@ class AppController extends Controller {
 
     public $components = array(
 //        'DebugKit.Toolbar',
+        'ContentManagement.Upload',
+        'Paginator',
         'Session',
         'Auth' => array(
             'loginAction' => array('controller' => 'users', 'action' => 'login', 'plugin' => 'users', 'admin' => false),
@@ -56,6 +58,7 @@ class AppController extends Controller {
                 ),
             ),
         ),
+        'Search.Prg',
     );
 
     public $helpers = array(
@@ -146,6 +149,11 @@ class AppController extends Controller {
                 $controller = "{$plugin}AppController";
 
                 App::uses($controller, "{$plugin}.Controller");
+
+                if (!class_exists($controller)) {
+                    continue;
+                }
+
                 $instance = new $controller;
 
                 if (!method_exists($instance, $callback_name)) {
