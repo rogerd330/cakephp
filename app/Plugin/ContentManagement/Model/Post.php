@@ -21,6 +21,9 @@ class Post extends ContentManagementAppModel {
             'type' => 'like',
             'field' => 'title',
         ),
+        'enabled' => array(
+            'type' => 'value',
+        )
     );
 
 /**

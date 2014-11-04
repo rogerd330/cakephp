@@ -32,7 +32,9 @@ class SearchesController extends ContentManagementAppController {
 
         $conditions = array();
 
-        $conditions = array_merge($conditions, $this->Post->parseCriteria($this->Prg->parsedParams()));
+        $params = array_merge($this->Prg->parsedParams(), array('enabled' => true));
+
+        $conditions = array_merge($conditions, $this->Post->parseCriteria($params));
 
         $this->Paginator->settings['conditions'] = $conditions;
 
