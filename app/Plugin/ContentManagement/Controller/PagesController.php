@@ -180,7 +180,8 @@ class PagesController extends ContentManagementAppController {
 			}
 		}
 
-        $parents = $this->Post->generateTreeList(array('Post.type' => CMS_PAGE));
+//		$this->Post->reorder(array('id' => null, 'field' => 'Post.title'));
+		$parents = $this->Post->generateTreeList(array('Post.type' => CMS_PAGE));
         $this->set(compact('parents'));
 	}
 
@@ -207,6 +208,7 @@ class PagesController extends ContentManagementAppController {
 			$this->request->data = $this->Post->read(null, $id);
 		}
 
+		$this->Post->reorder(array('id' => null, 'field' => 'Post.title'));
         $parents = $this->Post->generateTreeList(array('Post.type' => CMS_PAGE, 'Post.id !=' => $id));
         $meta = $this->getMeta('Post', $id);
         $this->set(compact('parents', 'meta'));
