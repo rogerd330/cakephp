@@ -3,7 +3,7 @@
 	<h2><?php echo __('Pages');?></h2>
 	
 	<div class="btn-group">
-        <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span> New Page'), array('action' => 'add'), array('class' => 'btn btn-primary', 'escape' => false)); ?>
+        <?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span> New Page'), array('action' => 'add', 'plugin' => 'content_management', 'admin' => true), array('class' => 'btn btn-primary', 'escape' => false)); ?>
 	</div>
 	
 	<br />
