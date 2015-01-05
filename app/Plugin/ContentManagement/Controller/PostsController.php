@@ -53,6 +53,7 @@ class PostsController extends ContentManagementAppController {
         $conditions = array(
             'Post.type' => CMS_POST,
             'Post.enabled' => true,
+            'Post.published <=' => date('Y-m-d H:i:s'),
         );
 
         if (isset($params['category'])) {
@@ -270,6 +271,7 @@ class PostsController extends ContentManagementAppController {
             'conditions' => array(
                 'Post.type' => CMS_POST,
                 'Post.enabled' => true,
+                'Post.published <=' => date('Y-m-d H:i:s'),
             ),
             'limit' => 5,
         ));
@@ -280,6 +282,7 @@ class PostsController extends ContentManagementAppController {
             'conditions' => array(
                 'Post.type' => CMS_POST,
                 'Post.enabled' => true,
+                'Post.published <=' => date('Y-m-d H:i:s'),
             ),
             'fields' => 'Post.published',
             'group' => array('DATE_FORMAT(Post.published, "%Y-%m")'),
