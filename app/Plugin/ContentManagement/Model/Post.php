@@ -160,4 +160,42 @@ class Post extends ContentManagementAppModel {
 
         return $results;
     }
+
+
+    /**
+     * Use this instead of "exists" for public actions, to make sure a Post is really meant to be visible by the world.
+     *
+     * @return bool
+     */
+    public function isPubliclyAvailable() {
+        $id = $this->getID();
+        $the_post = $this->find('first', array(
+            'conditions' => array(
+                'Post.id' => $id,
+            ),
+            'fields' => array(
+                'Post.enabled',
+                'Post.published',
+            ),
+            'recursive' => -1,
+            'callbacks' => false,
+        ));
+
+        $invalid_post = empty($the_post);
+
+//        Don't try to process any more logic unless we know the Post even exists.
+        if ($invalid_post) {
+            return false;
+        }
+
+        $disabled_post = $the_post['Post']['enabled'] === false;
+        $unpublished_post = new DateTime($the_post['Post']['published']) > new DateTime();
+
+        if ($disabled_post || $unpublished_post) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }

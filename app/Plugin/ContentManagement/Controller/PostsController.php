@@ -89,7 +89,7 @@ class PostsController extends ContentManagementAppController {
  */
 	public function view($id = null) {
 		$this->Post->id = $id;
-		if (!$this->Post->exists()) {
+		if (!$this->Post->isPubliclyAvailable()) {
 			throw new NotFoundException(__('Invalid post'));
 		}
 		$this->set('post', $this->Post->read(null, $id));
